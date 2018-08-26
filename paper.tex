@@ -1,0 +1,258 @@
+\documentclass[11pt,titlepage]{book}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools,empheq}
+\usepackage{verbatim,url}
+\usepackage{epsfig}
+\usepackage[bf]{subfigure}
+\usepackage[bf]{caption}
+
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+%  colorlinks=false,
+%  citecolor=black,
+   pagebackref=true,
+   breaklinks=true,
+   colorlinks,
+   linktoc=all
+}%
+
+%\usepackage[numbers]{natbib}
+\usepackage{natbib}
+
+% For setmarginsrb:
+\usepackage{vmargin}
+
+\usepackage{nomencl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+
+% commutative diags
+\usepackage{tikz-cd}
+
+% customize lists
+\usepackage{enumitem}
+
+\renewcommand{\cite}{\citep}
+%\newcommand{\mynewpage}{{\mbox{BLANK PAGE}}\cleardoublepage}
+%\newcommand{\mynewpage}{{\mbox{}}\cleardoublepage}
+\newcommand{\mynewpage}{}
+% For onehalfspacing or doublespacing:
+%\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\includeonly{%
+  front-matter,
+  todo,
+  refs,
+}
+
+\renewcommand{\nomname}{Table of Notations}
+\makenomenclature
+
+% -- Possible lems.sty
+% TODO - include new command for epheq/aligned eqn environments with braces
+\renewcommand{\qedsymbol}{$\blacksquare$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You have two versions of the macro
+% \draftnote{My note}. The first version puts notes (e.g. My note in the example)
+% into the margin of your document. The second formats the note as nothing. You
+% 'comment out' the version of the macro you don't want (using a % at the
+% beginning of the line).
+\newcommand{\draftnote}[1]{\marginpar{\tiny\raggedright\textsf{\hspace{0pt}#1}}}
+%\newcommand{\draftnote}[1]{}
+%
+% This one is just for the comments for in-line text.
+\newcommand{\indraftnote}[1]{\textcolor{blue}{\texttt{\footnotesize [#1]}}}
+\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" é para eu não esquecer
+
+\def\FigureFont{\footnotesize}
+\def\TableFont{\small}
+\def\SectionTitleFont{\large}
+\def\TextFont{\normalsize}
+\def\ReferenceFont{\normalsize}
+\def\Reducefigspace{\vspace{-0.7 truecm}} %0.3
+\def\ReduceRDfigspace{\vspace{-1.51truecm}}
+\def\ReduceEndFigSpace{\vspace{-0.01 truecm}} %0.38
+\def\ReduceRefSpace{\vspace{-0.01 truecm}} %0.5
+\def\SectionSpacing{\vspace{0.5 truecm}} %0.25
+\def\SubSectionSpacing{\vspace{0.5 truecm}} %0.25
+\def\subsubsection#1{\par\medskip\noindent{\bf #1}\quad\nopagebreak}
+\def\Bibspace{\vspace{-0.5cm}}
+\def\ReduceSubsectionBelow{\vspace{-0.2cm}}
+\def\ReduceSubsectionAbove{\vspace{-0.5cm}}
+\def\IncreaseSubSubSectionAbove{\vspace{0.2cm}}
+\def\ReduceEqSpace{\vspace{-0.1cm}}
+\def\ReduceSecSpace{\vspace{-0.1cm}}
+
+
+\newcommand{\etc}{{\it etc}}
+\newcommand{\ie}{{\it i.e.}}
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\wrt}{{\it w.r.t. }}
+\newcommand{\etal}{{\it et.~al.}}
+\newcommand{\intinf}{\int_{-\infty}^{\infty}}
+\newcommand{\grad}{\nabla}
+\newcommand{\slant}{\sigma}
+\newcommand{\R}{\mathbb{R}} % the reals
+\newcommand{\trace}{\text{trace}\,}
+%\newcommand{\det}{\text{det}}
+
+% skew-symmetric arrangement
+\newcommand{\skewm}[1]{{#1}_\times}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newcommand{\lbar}{\overline}
+
+\newcommand{\id}{\text{\emph{I}}}
+\newcommand{\dof}{\textsc{dof}}
+\newcommand{\ransac}{\textsc{ransac}}
+\newcommand{\sift}{\textsc{sift}}
+\newcommand{\klt}{\textsc{klt}}
+\newcommand{\svd}{\textsc{svd}}
+\newcommand{\sfm}{\textsc{sfm}}
+\newcommand{\rot}{\mathcal{R}}
+\newcommand{\brot}{\overline{\mathcal{R}}}
+
+\def\bsq#1{%both single quotes
+\lq{#1}\rq}
+
+% The following are not very good constructs it seems. Better to use just
+% \begin{bmatrix}..\end{\bmatrix}
+
+\newcommand{\datsqbr}[2][rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr]{\left[
+\begin{array}{#1}
+#2\\
+\end{array}
+\right]
+}
+
+
+% -- !lems.sty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setmarginsrb{30mm}{27mm}{20mm}{20mm}{12pt}{25pt}{0pt}{5mm}
+\setmarginsrb{30mm}{27mm}{40mm}{25mm}{12pt}{25pt}{0pt}{10mm}
+%             left   top  right bottom headheight headsep footheight footsep 
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{corolary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{property}{Property}
+\newtheorem{example}{Example}
+\newtheorem{transformation}{Transformation}
+
+\numberwithin{equation}{section}
+
+\newcommand{\Gama}{\boldsymbol{\Gamma}}
+\newcommand{\gama}{\boldsymbol{\gamma}}
+\newcommand{\gamad}{\dot{\gama}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\T}{\boldsymbol{T}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\NSurface}{\mathbf{N}}
+\newcommand{\Nlocal}{\overline{\N}} % normal in local coordinates
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\tDt}{t+\Delta t}
+\newcommand{\bpsi}{\boldsymbol{\boldsymbol{\psi}}}
+\newcommand{\bp}{\mathbf p}
+\newcommand{\deldt}[1]{\frac{\partial#1}{\partial t}}
+\newcommand{\ddt}[1]{\frac{d #1}{dt}}
+\newcommand{\delds}[1]{\frac{\partial#1}{\partial s}}
+\newcommand{\mybar}[1]{\overline{#1}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\brho}{\boldsymbol{\rho}}
+\newcommand{\lightrgb}{\boldsymbol{l}}
+\newcommand{\B}{\boldsymbol{B}}
+\renewcommand{\t}{\boldsymbol{t}}
+\newcommand{\n}{\boldsymbol{n}}
+\renewcommand{\b}{\boldsymbol{b}}
+\newcommand{\e}{\boldsymbol{e}}
+\newcommand{\f}{\boldsymbol{F}}
+\newcommand{\hf}{\boldsymbol{\hat{f}}}
+\newcommand{\g}{\boldsymbol{g}}
+\newcommand{\G}{\boldsymbol{G}}
+\newcommand{\bc}{\boldsymbol{c}}
+\newcommand{\Curve}{\boldsymbol{\mathcal{C}}}
+%\newcommand{\X}{\boldsymbol{X}}
+%\newcommand{\x}{\boldsymbol{x}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\xx}{\mathcal{X}}  % used in Giblin's notes
+\newcommand{\tilx}{\tilde x}
+\newcommand{\tily}{\tilde y}
+\newcommand{\tilgama}{\tilde \gama}
+\newcommand{\ugama}{\hat{\gama}} %unit gama
+\newcommand{\br}{\bar r}
+\newcommand{\Kc}{\mathbf K_c}
+\newcommand{\lepi}{\mathbf r}
+\newcommand{\itan}{\tan^{-1}}
+\newcommand{\uu}{\xi}
+\newcommand{\buu}{\bar \uu}
+\newcommand{\bvv}{\bar \vv}
+\newcommand{\vv}{\eta}
+\newcommand{\VV}{\mathbf{V}} % translational velocity
+\newcommand{\VVspeed}{V} % translational velocity
+\newcommand{\field}{\boldsymbol\chi}
+\newcommand{\ufield}{\hat{\boldsymbol{\chi}}}
+\newcommand{\fieldc}{\chi} % field component
+\newcommand{\transl}{\mathcal{T}} % field component
+\newcommand{\btransl}{\overline{\mathcal{T}}} % field component
+\newcommand{\albedo}{\alpha}
+\newcommand{\depth}{\rho}      % depth as z
+\newcommand{\ddepth}{\dot{\rho}}      % depth as z
+\renewcommand{\l}{\lambda} % used in problem2-thoughts-giblin
+\newcommand{\udepth}{{\hat{\rho}}} % depth along ray
+\newcommand{\ttransl}{\T} % translation tangent
+\newcommand{\surface}{\mathcal{M}} % surface/manifold
+\newcommand{\surf}{\mathcal{M}} % surface/manifold short
+\newcommand{\jacm}{\mathtt{J}} % Jacobian matrix
+\newcommand{\xbar}{\bar x}
+\newcommand{\ybar}{\bar y}
+\newcommand{\zbar}{\bar z}
+
+\newcommand{\bdelta}{\boldsymbol \delta}
+%\newcommand{\X}{\boldsymbol{X}}
+%\newcommand{\x}{\boldsymbol{x}}
+%\newcommand{\X}{\mathbf{X}}
+%\newcommand{\x}{\mathbf{x}}
+\newcommand{\boldu}{\mathbf{u}}
+\newcommand{\boldv}{\mathbf{v}}
+\newcommand{\boldw}{\mathbf{w}}
+\newcommand{\tgtveloc}{\tilde\alpha} % real tangential velocity
+
+\makeindex
+\setcounter{tocdepth}{1}
+
+\begin{document}
+
+\include{front-matter}
+%\tableofcontents
+%\listoffigures
+%\printnomenclature[3.5cm]
+\mainmatter
+\pagestyle{fancy}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[RE]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RO]{\thepage}
+\include{todo}
+\include{refs}
+
+\end{document}

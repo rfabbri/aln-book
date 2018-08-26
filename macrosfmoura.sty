@@ -1,0 +1,210 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{macrosfmoura}[2006/09/21 Macros criados por Francisco e F�bio para a Bienal da SBM 2006]
+
+
+%% Pacotes utilizados
+\RequirePackage[loose]{subfigure}
+\subfiglabelskip=0pt
+%% Nice captions (with continuation option)
+\RequirePackage[subfigure]{ccaption} % this one must come first...
+\RequirePackage[margin=20pt,labelfont=bf]{caption}
+\RequirePackage[squaren,Gray,thinspace,thinqspace,textstyle,derivedinbase]{SIunits}
+
+
+%% Contadores
+\newcounter{numlista}
+\newcounter{alphalista}
+
+
+%% Macros Fgoncalves
+ 
+\DeclareRobustCommand{\efebx}{\mathbf{p}}%
+\DeclareRobustCommand{\efeby}{\mathbf{q}}%
+\DeclareRobustCommand{\efebb}{\mathbf{b}}%
+\DeclareRobustCommand{\efebf}{\mathbf{f}}%
+\DeclareRobustCommand{\efex}{p}%
+\DeclareRobustCommand{\efey}{q}%
+\DeclareRobustCommand{\efeb}{b}%
+\DeclareRobustCommand{\efef}{f}%
+ 
+\DeclareRobustCommand{\pefeb}{\mathbf{p}}%
+\DeclareRobustCommand{\qefeb}{\mathbf{q}}%
+\DeclareRobustCommand{\befeb}{\mathbf{b}}%
+\DeclareRobustCommand{\fefeb}{\mathbf{f}}%
+ 
+\DeclareRobustCommand{\uvelocityvector}{\mathbf{u}}%
+\DeclareRobustCommand{\velocityvector}{\mathbf{v}}%
+\DeclareRobustCommand{\normalvector}{\mathbf{n}}%
+\DeclareRobustCommand{\xpositionvector}{\mathbf{x}}%
+\DeclareRobustCommand{\evcanonico}{\mathbf{e}}%
+\DeclareRobustCommand{\Llength}{\mathcal{L}}%
+\DeclareRobustCommand{\Utypical}{\mathcal{U}}%
+\DeclareRobustCommand{\uv}{(u,v)}%
+\DeclareRobustCommand{\xy}{(x,y)}%
+\DeclareRobustCommand{\eseq}{(E^r)}%
+\DeclareRobustCommand{\strajetoria}{\mathbf{s}}%
+\DeclareRobustCommand{\vectorones}{1\!\!1}%
+\DeclareRobustCommand{\Reais}{\mbox{I\!R}}%
+
+
+%_____________________________________________________________________________
+%  Comandos Francisco
+\newcommand{\cao}{\c{c}\~{a}o}
+\newcommand{\ao}{\~{a}o}
+\newcommand{\coes}{\c{c}\~{o}es}
+\newcommand{\ah}{\'{a}}                            %portugues
+\newcommand{\ac}{\`{a}}
+\newcommand{\eh}{\'{e}}
+\newcommand{\ih}{\'{\i}}
+\newcommand{\oh}{\'{o}}
+\newcommand{\uh}{\'{u}}
+%
+\newcommand{\ttet}{\mbox{\boldmath $\tau$}}
+\newcommand{\om}{\mbox{\boldmath $\omega$}}
+\newcommand{\qs}{\mbox{\boldmath $\xi$}}
+\newcommand{\ga}{\mbox{\boldmath $\gamma$}}
+\newcommand{\oz}{\Omega_{0}}
+\newcommand{\ot}{\Omega_{t}}                    %grega boldmath
+\newcommand{\fii}{\mbox{\boldmath $\phi$}}
+\newcommand{\fit}{\mbox{\boldmath $\phi$}_{t}}
+\newcommand{\rot}{\mbox{\sf rot}\,}
+\newcommand{\dv}{\mbox{\sf div}\,}
+\newcommand{\tr}{\mbox{\sf tr}}
+\newcommand{\grad}{\mbox{$\nabla$}}
+\newcommand{\lap}{\bigtriangleup}
+%
+\newcommand{\ab}{\mbox{\boldmath $a$}}
+\newcommand{\ce}{\mbox{\boldmath $c$}}
+\newcommand{\de}{\mbox{$ {\cal D}$}}
+\newcommand{\tte}{\mbox{$ {\cal T}$}}
+\newcommand{\ff}{\mbox{\boldmath $f$}}
+\newcommand{\vve}{\mbox{\boldmath $v$}}       %boldfaces e K til
+\newcommand{\sss}{\mbox{$\cal S$}}
+\newcommand{\xis}{\mbox{\boldmath $x$}}
+\newcommand{\yp}{\mbox{\boldmath $y$}}
+\newcommand{\ze}{\mbox{\boldmath $z$}}
+\newcommand{\xz}{\mbox{\boldmath $x_{0}$}}
+\newcommand{\nn}{\mbox{\boldmath $n$}}
+\newcommand{\hh}{\mbox{\boldmath $h$}}
+\newcommand{\kt}{\tilde{K}}
+%
+\newcommand{\si}{\sum_{i=1}^{3}}
+\newcommand{\sj}{\sum_{j=1}^{3}}
+\newcommand{\sk}{\sum_{k=1}^{3}}
+\newcommand{\ssl}{\sum_{l=1}^{3}}               %somatorios e reais
+\newcommand{\sm}{\sum_{m=1}^{3}}
+\newcommand{\eijk}{\mbox{$\epsilon_{ijk}$}}
+%\newcommand{\re}{I\! \! R}
+\newcommand{\re}{\mathbb R}
+\newcommand{\rd}{\mbox{$\re^{2}$}}
+\newcommand{\rt}{\mbox{$\re^{3}$}}
+\newcommand{\xyt}{(x(\tau),y(\tau))}
+%
+\newcommand{\pa}{\partial}
+\newcommand{\eq}{\begin{equation}}
+\newcommand{\fq}{\end{equation}}
+\newcommand{\Dem}{{\bf Proof\ }}
+%
+%
+%                                        ex=exemplo
+%           comandos francisco           e=exercicio
+%
+\newcommand{\ii}{\mbox{\'{\i}}}
+\newcommand{\ca}{\c{c}\~{a}o}            %acentos portugues
+\newcommand{\cs}{\c{c}\~{o}es}
+%
+\newcommand{\bmx}{\mbox{\boldmath $x$}}
+\newcommand{\bmw}{\mbox{\boldmath $w$}}
+\newcommand{\bmc}{\mbox{\boldmath $c$}}
+\newcommand{\bmn}{\mbox{\boldmath $n$}}
+\newcommand{\bmy}{\mbox{\boldmath $y$}}
+\newcommand{\bmz}{\mbox{\boldmath $z$}}
+\newcommand{\bmu}{\mbox{\boldmath $u$}}
+\newcommand{\bma}{\mbox{\boldmath $a$}}           %bold
+\newcommand{\bme}{\mbox{\boldmath $e$}}
+\newcommand{\bmA}{\mbox{\boldmath $A$}}           %bold
+\newcommand{\bmb}{\mbox{\boldmath $b$}}
+\newcommand{\bmf}{\mbox{\boldmath $f$}}
+\newcommand{\bmT}{\mbox{\boldmath $T$}}
+\newcommand{\bmg}{\mbox{\boldmath $g$}}
+\newcommand{\bmp}{\mbox{\boldmath $p$}}
+\newcommand{\bmq}{\mbox{\boldmath $q$}}
+\newcommand{\bmr}{\mbox{\boldmath $r$}}
+\newcommand{\bmG}{\mbox{\boldmath $G$}}
+\newcommand{\bmK}{\mbox{\boldmath $K$}}
+\newcommand{\bmU}{\mbox{\boldmath $U$}}
+\newcommand{\bmH}{\mbox{\boldmath $H$}}
+\newcommand{\bmZ}{\mathbf{Z}}
+\newcommand{\bmalpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bmomega}{\mbox{\boldmath $\omega$}}
+\newcommand{\bmv}{\mbox{\boldmath $v$}}
+\newcommand{\bmt}{\mbox{\boldmath $t$}}
+\newcommand{\bfi}{\mbox{\boldmath $\phi$}}
+\newcommand{\bpsi}{\mbox{\boldmath $\psi$}}
+%
+\newtheorem{teo}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{lema}[teo]{Lemma}
+\newtheorem{obs}[teo]{Remark}
+\newtheorem{defi}[teo]{Definition}       %Estruturas
+\newtheorem{prop}[teo]{Proposition}
+\newtheorem{exer}{Exercise}
+\newtheorem{exem}[teo]{Example}
+%
+\newcommand{\di}{\mbox{\sf div} \,}
+\newcommand{\dii}{\mbox{\sf Div} \,}               %operadores diferenciais
+%\newcommand{\r}{\mbox{\sf rot} \,}
+\newcommand{\la}{\mbox{$\bigtriangleup$}}
+\newcommand{\gr}{\mbox{$\nabla$}}
+%
+%                                                          %gregas
+\newcommand{\te}{\mbox{$\theta$}}
+\newcommand{\s}{\mbox{$\sigma $}}
+%
+\newcommand{\fim}{ \hfill{\mbox{$\rule{2mm}{2mm}$}} }
+\newcommand{\dem}{{\bf Proof\ }}
+%
+\newcommand{\ve}{\mbox{$\rightarrow$}}
+\newcommand{\cd}{\mbox{$ \stackrel{\cal D}{\longrightarrow} $ }}
+\newcommand{\cdl}{\mbox{$ \stackrel{{\cal D}^{\prime}}{- \! \! \!
+  \rightharpoonup} $ }}
+\newcommand{\vai}{\mbox{$ \mbox{as~} \epsilon                      %seta converg
+\rightarrow 0 $}}
+\newcommand{\vain}{\mbox{$ \mbox{as}\ n \rightarrow \infty $}}
+\newcommand{\uni}{\mbox{$ \stackrel{unif}{- \! \! \! \longrightarrow}$}}
+\newcommand{\eled}{\mbox{$ \stackrel{{\cal L}^{2}}{\longrightarrow}$}}
+%
+\newcommand{\tes}{\mbox{$ \forall  \, \phi \,  \in \, {\cal C}^{\infty}_{0} $}}
+\newcommand{\teste}{\mbox{$ \forall \,  \mbox{\boldmath $\phi$} \,        %teste
+\in \, {\cal C}^{\infty}_{0} $}}
+%
+\newcommand{\del}{\mbox{$ {\cal D}'$}}
+\newcommand{\ciz}{\mbox{$ {\cal C}_{\infty}^{0} $ }}              %conjuntos
+\newcommand{\czi}{\mbox{$ {\cal C}^{\infty}_{0} $ }}
+%
+\newcommand{\aee}{\left\langle}
+\newcommand{\ad}{\right\rangle}
+\newcommand{\sine}{\mbox{$\,$sen$\,$}}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\figura}{ \vskip7cm}
+\newcommand{\fl}[2]{\mbox{$\frac{#1}{#2}$}}
+%
+\newcommand{\bem}{\begin{em}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\fem}{\end{em}}                              %formulas
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beas}{\begin{eqnarray*}}
+\newcommand{\eeas}{\end{eqnarray*}}
+%
+%
+\newcommand{\ofe}{\mbox{$\Omega_{f}^{\epsilon}$}}
+%
+%          separacao de silabas
+%
+%
+\hyphenation{a-in-da a-go-ra tem-po  va-le}
+%_____________________________________________________________
+% Fim comandos Francisco
+
