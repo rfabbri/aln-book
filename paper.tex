@@ -49,6 +49,7 @@
 
 \includeonly{%
   front-matter,
+  intro,
   todo,
   refs,
 }
@@ -70,7 +71,7 @@
 %
 % This one is just for the comments for in-line text.
 \newcommand{\indraftnote}[1]{\textcolor{blue}{\texttt{\footnotesize [#1]}}}
-\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" √© para eu n√£o esquecer
+\newcommand{\todo}[1]{\indraftnote{todo: #1}} % Este  "a fazer" È para eu n„o esquecer
 
 \def\FigureFont{\footnotesize}
 \def\TableFont{\small}
@@ -256,6 +257,7 @@
 \fancyhead[RE]{\thepage}
 \fancyhead[LO]{\nouppercase{\rightmark}}
 \fancyhead[RO]{\thepage}
+\include{intro}
 \include{todo}
 \include{refs}
 
