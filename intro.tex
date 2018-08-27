@@ -1,5 +1,73 @@
 \mynewpage
-\chapter{Introdução}
+\chapter{O que é uma matriz?}
 
-teste
+\section*{Objetivos}
+\begin{itemize}
+\item Aula introdutória informal dando visão geral e uma contextualização do curso
+\item Motivar alunos de engenharia da computação da importância do curso
+\item O que é álgebra linear numérica: explicar termos ``álgebra'', ``linear'',
+  e ``numérica''. Por quê são importantes.
+\item Matrizes como representação numérica de transformações lineares
+\item Critério de avaliação
+\end{itemize}
 
+\subsection*{O que é uma matriz?}
+\begin{itemize}
+\item Uma tabela retangular de números, porém não só. 
+\item Associados à tabela há também uma ``álgebra'': as operações algébricas
+  busuais de multiplicação matriz-vetor e matriz-matriz vistas no ensino médio,
+  as parecem um tanto arbitrárias.
+\item Quando falamos de matrizes em Engenharia, sempre incluimos, portanto, tais operações.
+\item O curso se chama Álgebra Linear Numérica. Até agora, então, falamos algo
+  de ``numérico'' (matrizes são um monte de números) e de ``algébra''
+  (operações). E o ``linear''?
+\item Matrizes são representações numéricas de transformações lineares.
+\end{itemize}
+
+\subsection*{O que é ``Linear''?}
+``Linearidade'' é uma forma de ``simplicidade''. Esta simplicidade se manifesta
+  em diversos níveis: o geométrico, o simbólico, e o numérico:
+  
+\paragraph{Simbólico:}
+No plano simbólico ou algébrico, explica-se os fenômenos de forma operacional e
+abstrata, sem muita intuição conceitual sobre o significado dos símbolos ou operações.
+\begin{definition} \emph{(Simbolicamente Linear)} \label{def:linear:symbolic}
+Muitos matemáticos irão definir ``linear'' como a
+  qualidade de uma função ou transformação $L$ tal que 
+  \begin{empheq}[left=\empheqlbrace]{align}
+    &L(v + w) = L(v) + L(w)\\
+    &L(\alpha v) = \alpha L(v),
+    \label{eq:linear:symbolic}
+  \end{empheq}
+  para todos vetores $v$ e $w$, e escalares $\alpha$.
+\end{definition}
+\begin{itemize}
+\item Tal definição, apesar de suscinta e formalmente elegante, tem pouca
+  concretude imediata.
+\item ``Linear'' aqui significa apenas uma simplicidade formal, ou seja, as
+  manipulações algébricas são simples.
+\end{itemize}
+
+\paragraph{Geométrico:} No plano que aqui chamamos de ``geométrico'',
+``conceitual'', ou ``visual'', os fenômenos são explicados de maneira concreta,
+mais próxima do objetivo ou de aplicações reais. 
+
+No mundo real, o que observamos
+a princípio não é numérico: uma bola, um flúido em movimento, ou um feixe de nêutrons.
+Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portanto, não
+é enfatizado na maioria dos cursos. Mas é o mais importante.
+\begin{definition} \emph{(Geometricamente Linear)}
+  Chama-se ``Linear'' qualquer operação geométrica que combina quaisquer das seguintes
+  operações simples: girar, esticar e refletir.
+  \label{def:linear:geometric}
+\end{definition}
+
+\mynewpage
+\chapter{Revisão de Álgebra Linear}
+\begin{itemize}
+\item Relebrar representação numérica de transformações lineares
+\item Revisar álgebra linear não-numérica (``simbólica'')
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\end{itemize}
