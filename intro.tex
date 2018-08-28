@@ -73,7 +73,7 @@ Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portan
   teorema mais importante a ser explorado neste curso.
 \item Como exemplo, temos a seguinte figura:
   \begin{center}
-  \includegraphics[scale=0.5]{figs/nonlinear-trasnf-hands.pdf}
+  \includegraphics[scale=0.5]{figs/nonlinear-transf-hands.pdf}
   \end{center}
   A mão à esquerda sofre transformações lineares na linha acima, e não-lineares
   na linha abaixo. As transformações acima são lineares pois consistem em
@@ -155,19 +155,38 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
   porém com algumas operações não-lineares.
 \end{itemize}
 
-\subsection*{Conclusão}
+\paragraph{Para quê servem as transformações lineares, se elas são tão
+limitadas?}
+
 \begin{itemize}
 \item O mundo real é não-linear
 \item O ``Linear'' foi inventado como uma simplificação do não-linear, mas em si
   não tem aplicação prática.
-\item Logo, o Linear não faz sentido sem o não-linear. O linear só existe como
-  artefato para modelar o não-linear.
+\item O linear não faz sentido sem o não-linear. 
+\item O linear só existe como artefato para modelar o não-linear.
 \item O paradigma é tomar um fenõmeno real (e não-linear) e linearizá-lo, para
   usar as ferramentas deste curso.
 \item Daí a importância de se estudar cursos como análise no $\mathbb R^n$, onde
-  certos fenômenos não-lineares são estudados (diferenciáveis), tendo como
+  fenômenos não-lineares são estudados tendo como
   ferramenta básica a álgebra linear.
+\item Álgebra linear também é o primeiro contato do aluno com $n$ dimensões, para $n > 3$, o tem importância direta na prática, por exemplo em inteligência artificial,
+\emph{machine learning}.
+\item Por exemplo, o paradigma de cálculo e análise no $\mathbb R^n$ é estudar o
+  não-linear realizando linearizações locais (diferenciação). Dessa forma, para
+  se deformar a mão de forma mais geral, como na figura abaixo, pode-se usar
+  várias transformações lineares com fatores de esticamento e rotação diferentes para cada ponto:
+  \begin{center}
+  \includegraphics[scale=0.5]{figs/nonlinear-using-linear.pdf}
+  \end{center}
+\item Em cada quadrado verde, temos uma deformação próxima de uma rotação e um
+  esticamento.
+\item Curiosidade: a deformação não-linear da mão é uma função de $\mathbb R^2
+  \to \mathbb R^2$ estudada em Análise no $\mathbb R^n$. A aproximação da
+  deformação de cada quadrado verde é chamada de diferencial da função
+  não-linear, e sua forma numérica (matricial) é estudada em álgebra linear
+  numérica.
 \end{itemize}
+
 
 \subsection*{Tarefas}
 
