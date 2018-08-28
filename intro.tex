@@ -4,8 +4,8 @@
 \section*{Objetivos}
 \begin{itemize}
 \item Aula introdutória informal dando visão geral e uma contextualização do curso
-\item Motivar alunos de engenharia da computação da importância do curso, no
-  contexto de modelagem computacional do IPRJ/UERJ.
+\item Motivar alunos de engenharia da computação da importância da disciplina ao
+  final do curso, no contexto de modelagem computacional do IPRJ/UERJ.
 \item O que é álgebra linear numérica: explicar termos ``álgebra'', ``linear'',
   e ``numérica''. Por quê são importantes.
 \item Matrizes como representação numérica de transformações lineares
@@ -15,10 +15,10 @@
 \subsection*{O que é uma matriz?}
 \begin{itemize}
 \item Uma tabela retangular de números, porém não só. 
-\item Associados à tabela há também uma ``álgebra'': as operações algébricas
+\item Associados à tabela há uma ``álgebra'': operações algébricas
   usuais de multiplicação matriz-vetor e matriz-matriz vistas no ensino médio,
-  as parecem um tanto arbitrárias.
-\item Quando falamos de matrizes em Engenharia, sempre incluimos, portanto, tais operações.
+  que parecem arbitrárias.
+\item Quando falamos de matrizes em engenharia e ciência, sempre incluimos, portanto, tais operações.
 \item O curso se chama Álgebra Linear Numérica. Até agora, então, falamos algo
   de ``numérico'' (matrizes são um monte de números) e de ``algébra''
   (operações). E o ``linear''?
@@ -26,9 +26,14 @@
 \end{itemize}
 
 \subsection*{O que é ``Linear''?}
-``Linearidade'' é uma forma de ``simplicidade''. Esta simplicidade se manifesta
-  em diversos níveis: o geométrico, o simbólico, e o numérico:
-  
+\begin{itemize}
+\item Ao ouvir a palavra ``linear'', a maioria das pessoas tem em mente uma reta ou um
+plano.
+\item ``Linearidade'' em matemática é uma forma de ``simplicidade''.
+\item Esta simplicidade se manifesta em diversos níveis: o geométrico, o
+  simbólico, e o numérico:
+\end{itemize}
+   
 \paragraph{Simbólico:}
 No plano simbólico ou algébrico, explica-se os fenômenos de forma operacional e
 abstrata, sem muita intuição conceitual sobre o significado dos símbolos ou operações.
@@ -54,9 +59,10 @@ Muitos matemáticos irão definir ``linear'' como a
 mais próxima do objetivo ou de aplicações reais. 
 
 No mundo real, o que observamos
-a princípio não é numérico: uma bola, um flúido em movimento, ou um feixe de nêutrons.
-Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portanto, não
-é enfatizado na maioria dos cursos. Mas é o mais importante.
+a princípio não é numérico nem simbólico: uma bola girando, um flúido em movimento, ou um feixe de nêutrons.
+Muitas vezes, conceitos próximos da realidade, independentes das convenções de símbolos ou
+números, são difíceis de formalizar e, portanto, não são enfatizados na maioria
+dos cursos de álgebra linear.
 \begin{defi} \emph{(Geometricamente Linear)}
   Chama-se ``Linear'' qualquer operação geométrica que combina quaisquer das seguintes
   operações simples: girar, esticar e refletir.
@@ -67,7 +73,7 @@ Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portan
 \item Tais operações são globais e realizadas sobre um mesmo ponto central (origem)
 \item O esticamento pode ser realizado por fatores diferentes ao longo de eixos arbitrários, e inclui achatamentos
 \item Geralmente, esta definição é um teorema na teoria da álgebra linear, visto
-  apenas no final de um primeiro curso, o qual inicia com a definição simbólica.  Trata-se
+  apenas no final de um primeiro curso.  Trata-se
   do teorema do SVD -- \emph{Singular Value Decompositon}, ou decomposição em
   valores singulares. Trata-se de um análogo de autovalores e autovetores, e é o
   teorema mais importante a ser explorado neste curso.
@@ -117,10 +123,10 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
      a & 0 & 0 \\
      0 & b & 0 \\
      0 & 0 & c \\
-    \end{bmatrix}
+   \end{bmatrix},
     \label{eq:diagonal}
   \end{equation}
-  As quais transformam pontos $(x,y,z)$ da seguinte forma:
+  as quais transformam pontos $(x,y,z)$ da seguinte forma:
   \begin{equation}
     \Lambda = 
     \begin{bmatrix}
@@ -150,9 +156,9 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
 \item A translação é não-linear. Pode-se mostrar que, mesmo sendo uma operação
   geométrica simples, a translação não tem as propriedades de simplicidade
   algébrica como na definiçao simbólica acima, e também não pode ser expressa
-  numericamente como uma multiplicação de matrizes. Veremos que, com alguns
-  artifícios, é possível expressar a translação como multiplicação de matrizes,
-  porém com algumas operações não-lineares.
+  numericamente como uma multiplicação de matrizes. 
+\item Com alguns artifícios, é possível realizar translação com multiplicação de matrizes,
+  porém é preciso operações não-lineares (projeção).
 \end{itemize}
 
 \paragraph{Para quê servem as transformações lineares, se elas são tão
@@ -166,10 +172,14 @@ limitadas?}
 \item O linear só existe como artefato para modelar o não-linear.
 \item O paradigma é tomar um fenõmeno real (e não-linear) e linearizá-lo, para
   usar as ferramentas deste curso.
+\item Em Cálculo 1, estudamos funções não-lineares de uma variável usando
+  a derivada como linearização local (reta tangente). A reta tangente é uma
+  transformação linear de uma variável.
 \item Daí a importância de se estudar cursos como análise no $\mathbb R^n$, onde
-  fenômenos não-lineares são estudados tendo como
+  fenômenos não-lineares são modelados tendo como
   ferramenta básica a álgebra linear.
-\item Álgebra linear também é o primeiro contato do aluno com $n$ dimensões, para $n > 3$, o tem importância direta na prática, por exemplo em inteligência artificial,
+\item Álgebra linear também é o primeiro contato do aluno com $n$ dimensões,
+  para $n > 3$, e tem importância direta na prática, por exemplo em inteligência artificial,
 \emph{machine learning}.
 \item Por exemplo, o paradigma de cálculo e análise no $\mathbb R^n$ é estudar o
   não-linear realizando linearizações locais (diferenciação). Dessa forma, para
@@ -186,7 +196,6 @@ limitadas?}
   não-linear, e sua forma numérica (matricial) é estudada em álgebra linear
   numérica.
 \end{itemize}
-
 
 \subsection*{Tarefas}
 
