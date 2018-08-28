@@ -12,6 +12,7 @@
 *.dvi
 *.idx
 *.lof
+*.nlo
 *~
 *.~*#
 *.synctex.gz
