@@ -15,7 +15,7 @@
 \begin{itemize}
 \item Uma tabela retangular de números, porém não só. 
 \item Associados à tabela há também uma ``álgebra'': as operações algébricas
-  busuais de multiplicação matriz-vetor e matriz-matriz vistas no ensino médio,
+  usuais de multiplicação matriz-vetor e matriz-matriz vistas no ensino médio,
   as parecem um tanto arbitrárias.
 \item Quando falamos de matrizes em Engenharia, sempre incluimos, portanto, tais operações.
 \item O curso se chama Álgebra Linear Numérica. Até agora, então, falamos algo
@@ -31,7 +31,7 @@
 \paragraph{Simbólico:}
 No plano simbólico ou algébrico, explica-se os fenômenos de forma operacional e
 abstrata, sem muita intuição conceitual sobre o significado dos símbolos ou operações.
-\begin{definition} \emph{(Simbolicamente Linear)} \label{def:linear:symbolic}
+\begin{defi} \emph{(Simbolicamente Linear)} \label{def:linear:symbolic}
 Muitos matemáticos irão definir ``linear'' como a
   qualidade de uma função ou transformação $L$ tal que 
   \begin{empheq}[left=\empheqlbrace]{align}
@@ -40,7 +40,7 @@ Muitos matemáticos irão definir ``linear'' como a
     \label{eq:linear:symbolic}
   \end{empheq}
   para todos vetores $v$ e $w$, e escalares $\alpha$.
-\end{definition}
+\end{defi}
 \begin{itemize}
 \item Tal definição, apesar de suscinta e formalmente elegante, tem pouca
   concretude imediata.
@@ -56,11 +56,11 @@ No mundo real, o que observamos
 a princípio não é numérico: uma bola, um flúido em movimento, ou um feixe de nêutrons.
 Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portanto, não
 é enfatizado na maioria dos cursos. Mas é o mais importante.
-\begin{definition} \emph{(Geometricamente Linear)}
+\begin{defi} \emph{(Geometricamente Linear)}
   Chama-se ``Linear'' qualquer operação geométrica que combina quaisquer das seguintes
   operações simples: girar, esticar e refletir.
   \label{def:linear:geometric}
-\end{definition}
+\end{defi}
 
 \begin{itemize}
 \item Tais operações são globais e realizadas sobre um mesmo ponto central (origem)
@@ -83,7 +83,7 @@ definição geométrica ou simbólica.
   transformação linear
 \end{itemize}
 O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
-\begin{theorem}\label{teo:svd:informal}
+\begin{teo}\label{teo:svd:informal}
   (SVD numerico - informal)
   Toda matriz A de tamanho $m\times n$ pode ser escrita da forma:
   \begin{center}
@@ -92,7 +92,7 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
   Ou seja, toda matriz é uma matriz diagonal junto com matrizes ortogonais.
   A matriz diagonal realiza esticamento em cada eixo, e as matrizes ortogonais
   realizam rotações e reflexões. 
-\end{theorem}
+\end{teo}
 \begin{itemize}
 \item O tamanho das matrizes é
   \begin{equation}
