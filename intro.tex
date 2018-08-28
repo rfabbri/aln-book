@@ -4,7 +4,8 @@
 \section*{Objetivos}
 \begin{itemize}
 \item Aula introdutória informal dando visão geral e uma contextualização do curso
-\item Motivar alunos de engenharia da computação da importância do curso
+\item Motivar alunos de engenharia da computação da importância do curso, no
+  contexto de modelagem computacional do IPRJ/UERJ.
 \item O que é álgebra linear numérica: explicar termos ``álgebra'', ``linear'',
   e ``numérica''. Por quê são importantes.
 \item Matrizes como representação numérica de transformações lineares
@@ -64,13 +65,22 @@ Infelizmente, muitas vezes este aspecto é o mais difícil de formalizar e, portan
 
 \begin{itemize}
 \item Tais operações são globais e realizadas sobre um mesmo ponto central (origem)
-\item O esticamento pode ser realizado por fatores diferentes ao longo de eixos
-  arbitrários, e inclui achatamentos
+\item O esticamento pode ser realizado por fatores diferentes ao longo de eixos arbitrários, e inclui achatamentos
 \item Geralmente, esta definição é um teorema na teoria da álgebra linear, visto
   apenas no final de um primeiro curso, o qual inicia com a definição simbólica.  Trata-se
   do teorema do SVD -- \emph{Singular Value Decompositon}, ou decomposição em
   valores singulares. Trata-se de um análogo de autovalores e autovetores, e é o
   teorema mais importante a ser explorado neste curso.
+\item Como exemplo, temos a seguinte figura:
+  \begin{center}
+  \includegraphics[scale=0.5]{figs/nonlinear-trasnf-hands.pdf}
+  \end{center}
+  A mão à esquerda sofre transformações lineares na linha acima, e não-lineares
+  na linha abaixo. As transformações acima são lineares pois consistem em
+  girar ou esticar cada ponto da mão globalmente pelo mesmo ângulo ou fatores de
+  esticamento. Já as transformações na linha abaixo são não-lineares pois os
+  pontos ou sofrem deformações locais (diferentes para cada ponto da mão), ou
+  não são meramente girados e esticados.
 \end{itemize}
 
 \paragraph{Numérico:} Já definimos no início da aula que uma matriz é a
@@ -133,6 +143,30 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
   ou seja, esticam cada ponto ao longo de eixos por fatores $a$, $b$ e $c$. 
 \item Cada fator de esticamento $a$, $b$ ou $c$ pode ser zero, o que faz com que
   a matriz achate completamente uma das dimensões
+\end{itemize}
+
+\paragraph{Observações}
+\begin{itemize}
+\item A translação é não-linear. Pode-se mostrar que, mesmo sendo uma operação
+  geométrica simples, a translação não tem as propriedades de simplicidade
+  algébrica como na definiçao simbólica acima, e também não pode ser expressa
+  numericamente como uma multiplicação de matrizes. Veremos que, com alguns
+  artifícios, é possível expressar a translação como multiplicação de matrizes,
+  porém com algumas operações não-lineares.
+\end{itemize}
+
+\subsection*{Conclusão}
+\begin{itemize}
+\item O mundo real é não-linear
+\item O ``Linear'' foi inventado como uma simplificação do não-linear, mas em si
+  não tem aplicação prática.
+\item Logo, o Linear não faz sentido sem o não-linear. O linear só existe como
+  artefato para modelar o não-linear.
+\item O paradigma é tomar um fenõmeno real (e não-linear) e linearizá-lo, para
+  usar as ferramentas deste curso.
+\item Daí a importância de se estudar cursos como análise no $\mathbb R^n$, onde
+  certos fenômenos não-lineares são estudados (diferenciáveis), tendo como
+  ferramenta básica a álgebra linear.
 \end{itemize}
 
 \subsection*{Tarefas}
