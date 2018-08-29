@@ -3,11 +3,12 @@
 
 \section*{Objetivos}
 \begin{itemize}
-\item Representação numérica de transformações lineares: matrizes
+\item Representação numérica de transformações lineares: matrizes. 
 \item Conectar álgebra linear simbólica com a numérica, mas a fundo.
 \item Sem a conexão do numérico com o simbólico, as matrizes perdem
   significado.
 \item Como obter os números de uma matriz, a partir do que se deseja realizar na prática?
+\item Fixar e aprofundar o que já foi visto em outros cursos
 \end{itemize}
 
 \section*{Vimos} -- revisar conceitos da aula passada
@@ -46,15 +47,67 @@ matriz-vetor.
 
 \textbf{A Equação~\ref{eq:matrix:linmap} acima é uma das equações mais
 importantes
-conectando álgebra linear simbólica com a álgebra linear numérica.}
+conectando álgebra linear simbólica com a álgebra linear numérica. O engenheiro
+deve memorizá-la.}
+
 
 \begin{teo}
 As entradas numéricas da matriz $\mathcal M^A_B(L)$ são dadas por:
-\begin{equation}
-\mathcal M^A_B(L) = \left[ M^A_B(L)(\mathcal X_A(a_1)) \,\,\,\,
-M^A_B(L)(\mathcal X_A(a_2))
-\,\,\cdots \,\, M^A_B(L)(\mathcal X_A(a_n)) \right]
-\end{equation}
-Ou seja, escreva cada vetor base $a_i$ transformado, $L(a_i)$, em termos da 
+\begin{align}
+\mathcal M^A_B(L) &=
+\begin{bmatrix}
+  | & | &   & |\\
+ M^A_B(L)(\mathcal X_A(a_1)) & M^A_B(L)(\mathcal X_A(a_2)) & \cdots &
+ M^A_B(L)(\mathcal X_A(a_n))\\
+  | & | &   & |
+\end{bmatrix}\\
+&\ \nonumber\\
+&= \begin{bmatrix}
+  | & | &   & |\\
+  \mathcal X_B(L(a_1)) & X_B(L(a_2)) & \cdots &
+      X_B(L(a_n)) \\
+  | & | &   & |
+\end{bmatrix}
+\end{align}
+Ou seja, escreva cada vetor $a_i$ da base $A$, transformado por $L$, em termos da 
 base $B$, e em seguida coloque-os na coluna $i$ da matriz.
 \end{teo}
+\dem
+Como $\mathcal X_A(a_i)$ é dado por $(0,\ldots,1,\ldots,0)^\top$, onde 1 ocorre na
+$i$-ésima entrada, então a equação~\ref{eq:matrix:linmap} aplicada a esse vetor
+resulta na $i$-ésima coluna da matriz como sendo $\mathcal X_B(L(a_i))$.
+\fim
+
+\begin{itemize}
+\item Implícita na definição de matriz está tanto uma tranformação linear (que
+  tem interpretações geométricas), como a escolha de uma base
+\item É possível, portanto, ter diversas representações numéricas (matrizes)
+  para uma mesma transformação linear.
+\item A transformação identidade $L = id$, tal que $id(v) = v$, pode ter diversas representações
+  matriciais, além da representação usual com 1's na diagonal.
+\end{itemize}
+
+\begin{defi} (\emph{Matriz de mudança de base}).
+  Dadas duas bases $A$  e $B$ de um mesmo espaço vetorial $V$,  
+  a matriz de mudança de base de $A$ a $B$ é a matriz do mapa identidade
+  relativa às bases $A$ e $B$, ou seja,  $\mathcal M^A_B(id)$.
+\end{defi}
+
+\paragraph{Observações}
+\begin{itemize}
+\item A matriz de mudança de base leva vetores numéricos $\mathcal X_A(v)$ a
+vetores numéricos $\mathcal X_B(v)$ via multiplicação usual de matrizes:
+\begin{equation}
+\mathcal X_B(v)  = \mathcal M^A_B(id) \mathcal X_A(v). 
+\end{equation}
+\item Apesar da tranformação identidade $id$ ser tal que $id(v) = v$, a matriz
+  dessa transformação relativa a bases $A$ e $B$ tal que $A \neq B$ não é a
+  matriz identidade. Em outras palavras, não é o mapa identidade no espaço
+  numérico.
+\end{itemize}
+
+\begin{align}
+\mathcal M^A_B(id):  \mathcal K^n \text{(coordinates)} &\to \mathcal K^n \text{(coordinates)} \\
+\mathcal X_A(v) &\mapsto \mathcal 
+\mathcal M^A_B(id) \mathcal X_A(v) = X_B(v)
+\end{align}
