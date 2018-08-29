@@ -1,5 +1,10 @@
 \documentclass[14pt,titlepage]{extbook}
 \usepackage[most]{tcolorbox}  
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=magenta!30!magenta,
+    colback=white!30, boxrule=2pt,
+#1}
 
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}

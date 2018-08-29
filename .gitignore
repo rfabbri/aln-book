@@ -21,3 +21,4 @@ paper.out
 !diffbook.pdf
 bak/
 Makefile
+.DS_Store

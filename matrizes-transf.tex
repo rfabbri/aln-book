@@ -4,11 +4,57 @@
 \section*{Objetivos}
 \begin{itemize}
 \item Representação numérica de transformações lineares: matrizes
-\item Conectar álgebra linear simbólica com a numérica, mas a fundo
+\item Conectar álgebra linear simbólica com a numérica, mas a fundo.
+\item Sem a conexão do numérico com o simbólico, as matrizes perdem
+  significado.
 \item Como obter os números de uma matriz, a partir do que se deseja realizar na prática?
 \end{itemize}
 
-\section*{Observações Iniciais}
+\section*{Vimos} -- revisar conceitos da aula passada
 \begin{itemize}
-\item ononoono
+\item Vetores como meros símbolos com operações algébricas de soma, e multiplicação
+  por escalar
+\item Vetores numéricos como coordenadas $\mathcal X$ dos vetores simbólicos em uma base.
+\item $V$ e $W$ irão representar espaços vetoriais
 \end{itemize}
+
+
+Vamos lembrar a definição simbólica de transformação linear introduzida na
+Aula~\ref{ch:intro}:
+\begin{defi} \emph{(Simbolicamente Linear)} \label{def:linear:symbolic}
+Uma função $L: V \to W$ é dita linear se 
+  \begin{empheq}[left=\empheqlbrace]{align}
+    &L(u + v) = L(u) + L(v)\\
+    &L(\alpha v) = \alpha L(v),
+    \label{eq:linear:symbolic}
+  \end{empheq}
+  para todos vetores $u$, $v$, e escalares $\alpha$. Em vez de ``função''
+(vetorial), usamos o termo ``transformação'' ou ``mapa''.
+\end{defi}
+
+\begin{defi}
+Dado um mapa $L:V \to W$ e duas bases
+$A = \{a_1, a_2, \ldots, a_n\}$ e $B = \{b_1, b_2, \ldots,
+b_n\}$, a matriz de $L$ relativa às bases $A$ e $B$ é a única matriz
+$\mathcal M^A_B(L)$ tal que: 
+\begin{empheq}[box=\mymath]{equation}\label{eq:matrix:linmap}
+\mathcal X_B(L(v)) = \mathcal M^A_B(L)\cdot \mathcal X_A(v)
+\end{empheq}
+para qualquer vetor $v \in V$, onde ``$\cdot$'' é a multiplicação usual de
+matriz-vetor.
+\end{defi}
+
+\textbf{A Equação~\ref{eq:matrix:linmap} acima é uma das equações mais
+importantes
+conectando álgebra linear simbólica com a álgebra linear numérica.}
+
+\begin{teo}
+As entradas numéricas da matriz $\mathcal M^A_B(L)$ são dadas por:
+\begin{equation}
+\mathcal M^A_B(L) = \left[ M^A_B(L)(\mathcal X_A(a_1)) \,\,\,\,
+M^A_B(L)(\mathcal X_A(a_2))
+\,\,\cdots \,\, M^A_B(L)(\mathcal X_A(a_n)) \right]
+\end{equation}
+Ou seja, escreva cada vetor base $a_i$ transformado, $L(a_i)$, em termos da 
+base $B$, e em seguida coloque-os na coluna $i$ da matriz.
+\end{teo}
