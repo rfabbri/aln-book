@@ -1,0 +1,144 @@
+\mynewpage
+\chapter{Revisão de Álgebra Linear}
+
+\section*{Objetivos}
+\begin{itemize}
+\item Relebrar representação numérica de vetores 
+\item Revisar álgebra linear não-numérica (``simbólica'')
+\item Estilo: revisão aprofundada para alunos que ja viram a disciplina. Notação
+solta adequada a uma revisão.
+\end{itemize}
+
+\section*{Observações Iniciais}
+\begin{itemize}
+\item A álgebra liner numérica começa com o conceito de escalares e coordenadas.
+\item Para haver coordenadas, é necessária a escolha da escolha de uma base
+\item O conceito de espaço vetorial (simbólico) permite isolar as operações
+  que não dependem da escolha de uma base, daquelas que dependem.
+\end{itemize}
+
+\begin{defi} \emph{(Espaço Vetorial Simbólico)}
+Um espaço vetorial $\mathcal V$ sobre um corpo $K$ é uma tupla ordenada
+$\mathcal V = (V, K, +, \cdot)$ de quatro elementos:
+\begin{empheq}[left=\mathcal V\ \ \empheqlbrace]{align}
+  &V\text{: conjunto cujos elementos são chamados ``vetores''}\nonumber\\
+  &K\text{: conjunto cujos elementos são chamados ``escalares''}\nonumber\\
+  &+\text{: soma de vetores}\nonumber\\
+  &\cdot\text{: multiplicação vetor-escalar,}\nonumber
+\end{empheq}
+onde ``+'' satisfaz:
+\begin{align}
+  +: V \times V &\to V\\
+  (v,w) &\mapsto v+w,
+\end{align}
+\begin{align}
+  &v + w = w + v\\
+  &v + (u + w) = (v + u) + w\\
+  &\exists !\ 0 \in V \text{ tal que } 0 + v = v,\ \forall v\in V\\
+  &\forall v \in V, \exists !\ w \in V \text{ tal que } v + w = 0, \text{simbolizado por } -v
+\end{align}
+e onde ``$\cdot$'' satisfaz:
+\begin{align}
+  \cdot: K \times V &\to V\\
+  (\alpha,w) &\mapsto v+w,
+\end{align}
+\begin{align}
+  &v + w = w + v\\
+  &v + (u + w) = (v + u) + w\\
+  &\exists !\ 0 \in V \text{ tal que } 0 + v = v,\ \forall v\in V\\
+  &\forall v \in V, \exists !\ w \in V \text{ tal que } v + w = 0, \text{simbolizado por } -v
+\end{align}
+e $K$ satisfaz as propriedades de uma estrutura algébridca chamada ``corpo'',
+que abstrai as operações de multiplicação, soma, subtração e divisão possíveis
+com números, geralmente $\mathbb R$ ou $\mathbb C$.
+\end{defi}
+
+\begin{itemize}
+\item Aos programadores em C++: a definição de espaço vetorial simbólico é como uma
+  \emph{classe}, que define as partes e as operações permitidas. 
+\item Na definição simbólica um vetor é apenas caracterizado pelas operações que
+  se pode realizar com ele, e as propriedades de tais operações.
+\item Até o momento, a única coisa ``numérica'' nesta definição é o  
+  corpo de escalares $K$. Os vetores ainda são entidades simbólicas que podem ser somadas e
+  multiplicadas por escalar.
+\item A teoria simbólica parece artificialmente trivial -- todos já sabemos as
+  propriedades convencionais de soma de vetores e multiplicação por
+  escalar. 
+\item No entanto, a teoria simbólica está mais próxima do conceitual que a
+  teoria numérica, pois isola os fatores que não dependem da escolha de um
+  sistema de coordenada.
+\item A conexão com o mundo numérico consiste em associar números a vetores.
+  Para tanto, é importante definir base e, para isso, dependência linear.
+\item Iremos assumir que $V$ e $W$ são espaços vetoriais.
+\end{itemize}
+
+\begin{defi}
+  Uma combinação linear de $v_1,\dots,v_n$, $v_i \in V$, é uma expressão da
+  forma
+  \begin{equation}
+    \alpha_1 v_1 + \dots + \alpha_n v_n = \sum \alpha_i v_i.
+  \end{equation}
+\end{defi}
+\begin{itemize}
+\item Notação: quando não há ambuguidade, iremos omitir os índices dos
+  somatórios $\sum$.
+\end{itemize}
+\begin{defi}
+  Os vetores $v_1,\dots,v_n$ são ditos linearmente indepententes (L.I.) se
+  \begin{equation}
+    \sum \alpha_i v_i\ \  \iff\ \  \alpha_i = 0\,\ i=1,\dots,n
+  \end{equation}
+\end{defi}
+
+\begin{prop}
+  $v_1,\dots,v_n$ são L.I. se, e somente se, cada $v_i$ não é o vetor nulo (isto
+    é, $v_i \neq 0$) e nenhum é combinação linear dos demais 
+\end{prop}
+
+\begin{defi}
+  $\{v_1,\dots,v_n\} \subset V$ é base de $V$ se
+\begin{empheq}[left=\empheqlbrace]{align}
+  &v_1,\dots,v_n \text{ são L.I. e}\\
+  &\text{todo $v \in V$ é combinação linear dos $v_i$'s}
+\end{empheq}
+\end{defi}
+
+Finalmente, chegamos ao conceito de coordenadas (numéricas) de um vetor:
+\begin{defi} \emph{(Coordenadas)} Dada uma base $B = \{v_1,\dots,v_n\}$ de $V$,
+então os números $\alpha_1,\dots,\alpha_n$ tal que
+  \begin{equation}
+    v = \sum \alpha_i v_i
+  \end{equation}
+  são chamados de coordenadas de $v$ em $V$ (na base $B$). Quando necessário,
+  utiliza-se a notação explícita: 
+  \begin{equation}
+  \mathcal X_B(v) = 
+  \begin{bmatrix}
+    \alpha_1\\
+    \alpha_n
+  \end{bmatrix},
+  \end{equation}
+  onde o símbolo ``chi'' $\mathcal X$ dever ser lido como ``coordenada de''.
+\end{defi}
+
+\begin{itemize}
+\item Se pensarmos no vetor simbólico $v\in V$ visualmente como uma seta desenhada no plano, suas
+coordenadas são um vetor numérico $2$ números, sendo necessário definir a base
+(posição dos eixos $x$ e $y$).
+\item Fixada uma base, existe uma relação 1-1 entre vetores simbólicos $v$ e
+  vetores de $n$ números.
+\end{itemize}
+
+\begin{teo}
+  Dada uma base de $n$ vetores, tem-se que:
+  \begin{itemize}
+  \item As $n$ coordenadas de um vetor são únicas
+  \item Qualquer outra base de $V$ tem o mesmo número de elementos $n$, que usaremos como
+    a definição da dimensão de $V$.
+  \end{itemize}
+\end{teo}
+\dem
+Ambos decorrem de propriedades de sistemas lineares. Os detalhes já foram
+vistos pelo aluno no primeiro curso de álgebra linear.
+\fim
+
