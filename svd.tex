@@ -1,0 +1,221 @@
+\mynewpage
+\chapter{Aprofundando em SVD}
+
+\section*{Objetivos}
+\begin{itemize}
+\item Definição formal de SVD após ter visto como usar
+\item Demonstração do SVD --  um dos teoremas mais importantes da álgebra linear
+  moderna, por causa de um algoritmo de álgebra lihnear numérica.
+\item Conexão com autovalores e autovetores
+\item Gancho para análise de algoritmos para SVD e para autovalores e
+  autovetores do Golub (este curso é estilo \emph{top-bottom})
+\item Interpretações gráficas de autovalores, autovetores, valores singulares e
+  vetores singulares
+\end{itemize}
+
+\section*{Vimos} -- revisar conceitos da aula passada
+\begin{itemize}
+\item Já vimos SVD operacionalmente: $A = U\Lambda V^\top$
+\item Já vimos como SVD pode ser usado para resolver sistemas $Ax \approx b$ de
+  forma prática, mesmo não sendo a mais eficiente em todos os casos.
+\item Veremos agora a definição formal de SVD
+\end{itemize}
+
+\begin{itemize}
+\item Um autovetor de trasnformação linear é um vetor cuja direção é preservada pela
+ transformação linear:
+\begin{center}
+  \includegraphics[scale=0.9]{figs/eigenvector.pdf}
+\end{center}
+\item A figura acima mostra que a matriz $A$ estica o disco a uma elipse, 
+  uma manifestação numérica de uma transformação linear
+\item Se imaginarmos que o disco é feito de borracha, e a matriz $A$ é tal que 
+  o esticamento é feito puxando-se os pontos do disco original ao longo de 
+  eixos da elipse, então a direção dos pontos ao longo dos eixos não se altera,
+  pois os pontos apenas movem ao longo dos eixos durante o esticamento
+\item Para tais tipos de matrizes, podemos tomar todos os eixos da elipse como
+  uma base:
+\begin{center}
+  \includegraphics[scale=0.9]{figs/all-eigenvectors.pdf}
+\end{center}
+\item Como fica esse raciocínio para \emph{qualquer} matriz $K$ de tamanho $m\times
+  n$?
+\item A resposta é SVD. Veja um esquema do enunciado que veremos formalmente a
+  seguir.
+\begin{center}
+  \includegraphics[scale=0.6]{figs/svd-enunciado.pdf}
+\end{center}
+\item Note que, diferenciar de $A$ acima, apropriada para autovetores e autovalores,
+  iremos utilizar a letra $K$ para uma matriz geral.
+\end{itemize}
+
+\begin{teo} \emph{(Decomposição em Valores Singulares)}
+  Seja $K$ uma matriz real $m\times n$ e $p \doteq \min \{m,n\}$
+Então existem bases ortonormais $\{u_1,\dots,u_n\}$ de $\mathbb{R}^n$
+e $\{v_1,\dots,v_m\}$ de $\mathbb R^m$ tais que
+\begin{equation}
+  K = V \Lambda U^\top,
+\end{equation}
+com $\Lambda$ matriz diagonal $m\times n$ com elementos diagonais
+\begin{equation}
+  \Lambda = 
+  \begin{bmatrix}
+    \sigma_1 & 0 & \dots & 0\\
+    0 & \sigma_2 & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & 0 \\
+    0 & \dots & 0 & \sigma_{\boldsymbol{n}}\\
+    0 & \multicolumn{2}{c}{\dots} & 0\\
+    \vdots & & & \vdots\\
+    0 & \multicolumn{2}{c}{\dots} & 0
+  \end{bmatrix}
+\end{equation},
+se $m > n = p$, ou 
+\begin{equation}
+  \Lambda = 
+  \begin{bmatrix}
+    \sigma_1 & 0 & \dots & 0 &0 & \multicolumn{2}{c}{\dots} & 0\\
+    0 & \sigma_2 & \ddots & \vdots & \vdots & & & \vdots\\
+    \vdots & \ddots & \ddots & 0 & \vdots & & & \vdots\\
+    0 & \dots & 0 & \sigma_{\boldsymbol{m}}& 0 & \multicolumn{2}{c}{\dots} & 0
+  \end{bmatrix}
+\end{equation}, se $p = m < n$,
+e as matrizes 
+$$
+V =
+\begin{bmatrix}
+  | &  &  |\\
+  v_1 & \dots & v_m\\
+  | &  &  |
+\end{bmatrix}_{m\times m}
+\text{ \ \ \ e \ \ } 
+U =
+\begin{bmatrix}
+  | &  &  |\\
+  u_1 & \dots & u_n\\
+  | &  &  |
+\end{bmatrix}_{n\times n}
+$$
+são ambas ortogonais. Os números $\sigma_1,\dots,\sigma_p$ são chamados valores
+singulares de $K$.
+\end{teo}
+\begin{proof}
+  \begin{itemize}
+  \item 
+  Note que $K$ define uma transformação linear $\mathbb R^n \to \mathbb R^m$.
+  \item Note-se, também, que $K$ é arbitrária. A idéia do teorema é montar uma matriz
+    simétrica, adequada para o cálculo de autovalores e autovetores. Dessa
+    forma, o SVD é reduzido a autovalroes e autovetores.
+  \item Há duas formas óbvias de montar uma matriz simétrica a partir de $K$: 
+  \item A primeira forma é $K = K^\top K$, uma matriz simétrica de tamanho $n\times n$.
+  \item A segunda é $K = KK^\top$, uma matriz simétrica de tamanho $m\times m$.
+  \item Os autovetores dessas matrizes dão os vetores singulares
+  \item Os autovalores dessas matrizes são iguais e dão os valores singulares ao
+    quadrado
+  \item A seguir, vamos detalhar esses passos de uma forma menos redundante
+  \end{itemize}
+  
+  \paragraph{1. Monta-se uma base ortonormal para $\mathbb R^n$ (domínio)}
+  \begin{itemize}
+  \item Seja $A = K^\top K$, a qual é real e simétrica, satisfazendo as hipóteses do
+  teorema espectral
+\item Sejam $u_1,\dots,u_n$ os vetores da base ortonormal de $\mathbb R^n$ que
+  diagonaliza $A$
+\item Sejam $\lambda_1\geq \dots \geq \lambda_n$ tal que
+  \begin{equation}
+    Au_i = \lambda u_i, \ \ \ i=1,\dots,n.
+  \end{equation}
+  \end{itemize}
+  
+  \paragraph{2. Monta-se uma base ortonormal para $\mathbb R^m$ (contra-domínio)}
+  Seja $n_0$ o índice do menor $\lambda_i$ e 
+  \begin{equation}
+    w_i \doteq K u_i, \ \ \ i = 1,\dots,n_0 \leq p.
+  \end{equation}
+  Então os $w_i$ são ortogonais:
+  \begin{equation}
+    w_i^\top w_j = u_i^\top K^\top K u_j = u_i^\top A u_j = \lambda_j u_i^\top
+    u_j = \lambda_j \delta_{ij},
+  \end{equation}
+  onde $\delta_{ij}$ é o delta de Kronecker ($1$, se $i=j$, $0$ se $i\neq j$)
+  para $i,j = 1,\dots,n_0$
+
+Definem-se 
+\begin{align}
+  v_i &\doteq \frac{w_i}{|w_i|} = \frac{K u_i}{|K u_i|}, \ \ \ i=1,\dots,n_0,\\
+  \sigma_i &\doteq |Ku_i|.
+\end{align}
+
+Logo, $v_1,\dots,v_{n_0}$ são ortonormais e 
+\begin{align}
+  Ku_i = \sigma_i v_i
+\end{align}
+e
+\begin{equation}
+  K^\top v_i = \frac{K^\top K}{\sigma_i}u_i = \frac{\lambda_i}{\sigma_i}u_i.
+\end{equation}
+Ademais, $\lambda_i = \sigma_i^2$, $i = 1,\dots,n_0$, pois
+\begin{align}
+  \lambda_1 &= \lambda_i u_i^\top u_i = (\lambda_i u_i)^\top u_i = (Au_i)^\top
+  u_i \\
+  &= (K^\top K u_i)^\top u_i = u_i^\top K^\top K u_i = (K u_i)^\top (K u_i)\\
+  &= \sigma_i^2V_i^\top V_i = \sigma^2_i, \ \ \ i=1,\dots,n_0
+\end{align}
+
+\begin{itemize}
+\item Definimos $\sigma_i \doteq 0$, para $n_0 < i \leq p$, se existir tal $i$
+\item Sejam $v_i$, $n_0 < i \leq m$, vetores ortonormais completando
+$v_1,\dots,v_{n_0}$ a uma base ortonormal de $\mathbb R^m$
+\item Montando-se as matrizes 
+$$
+V =
+\begin{bmatrix}
+  | &  &  |\\
+  v_1 & \dots & v_m\\
+  | &  &  |
+\end{bmatrix}_{m\times m}
+\text{ \ \ \ e \ \ } 
+U =
+\begin{bmatrix}
+  | &  &  |\\
+  u_1 & \dots & u_n\\
+  | &  &  |
+\end{bmatrix}_{n\times n},
+$$
+as propriedades enunciadas são satisfeitas.
+\end{itemize}
+\end{proof}
+
+\paragraph{Discussão 1}
+
+\begin{itemize}
+\item Dada a decomposiçào SVD $K = V \Lambda U^\top$,
+  multiplicando-se ambos os lados por $U$, tem-se:
+  \begin{equation}
+    K U = V \Lambda,
+  \end{equation}
+  ou seja 
+  \begin{equation}
+    K u_i = \sigma_i v_i,
+  \end{equation}
+  uma equação análoga à definição de autovalores e autovetores.
+\item Na equação, parece ser arbitrário que ao se multiplicar um vetor, obtém-se
+  o múltiplo de outro vetor
+\item É importante que $u_i$'s e $v_i$'s definem bases ortogonais para $\mathbb
+  R^n$ e $\mathbb R^m$, respectivamente
+\end{itemize}
+
+\paragraph{Discussão 2}
+\begin{itemize}
+\item Se $K = V \Lambda U^\top$, então $K^\top K = U\Lambda V^\top V \Lambda
+  U^\top = U \Lambda^2 U^\top$, uma diagonalização comum com autovetores e
+  autovalores
+\item E $K K^\top = V \Lambda ^2 V^\top$, uma diagonalização comum com autovetores e
+\item O SVD fornece bases ortonormais aos seguintes espaços fundamentais de $K$:
+\begin{empheq}[left=\empheqlbrace]{align}
+  v_1,\dots, v_r & \text{ base ortonormal de } \img(K)\\
+  v_{r+1},\dots, v_m & \text{ base ortonormal de } \ker(K^\top)\\
+  u_{1},\dots, u_r & \text{ base ortonormal de } \img(K^\top)\\
+  u_{r+1},\dots, u_n & \text{ base ortonormal de } \ker(K)
+\end{empheq}
+  
+\end{itemize}
