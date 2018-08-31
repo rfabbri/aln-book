@@ -33,6 +33,8 @@ Uma função $L: V \to W$ é dita linear se
 (vetorial), usamos o termo ``transformação'' ou ``mapa''.
 \end{defi}
 
+\section*{Aula de Hoje: Como construir uma matriz}
+
 \begin{defi}
 Dado um mapa $L:V \to W$ e duas bases
 $A = \{a_1, a_2, \ldots, a_n\}$ e $B = \{b_1, b_2, \ldots,
@@ -102,7 +104,7 @@ vetores numéricos $\mathcal X_B(v)$ via multiplicação usual de matrizes:
 \begin{equation}
 \mathcal X_B(v)  = \mathcal M^A_B(id) \mathcal X_A(v). 
 \end{equation}
-\item Apesar da tranformação identidade $id$ ser tal que $id(v) = v$, a matriz
+\item Apesar da transformação identidade $id$ ser tal que $id(v) = v$, a matriz
   dessa transformação relativa a bases $A$ e $B$ tal que $A \neq B$ não é a
   matriz identidade. Em outras palavras, não é o mapa identidade no espaço
   numérico.
@@ -114,3 +116,99 @@ vetores numéricos $\mathcal X_B(v)$ via multiplicação usual de matrizes:
 \mathcal X_A(v) &\mapsto \mathcal 
 \mathcal M^A_B(id) \mathcal X_A(v) = X_B(v)
 \end{align}
+
+\subsection{Rotações}
+
+\subsubsection{Rotações 2D}
+\paragraph{Motivação:} 
+\begin{itemize}
+\item Dada uma rotação (geometria) como definir a matriz de rotacao (algebra)?
+\item Dada uma mudanca de sistemas de coordenadas por uma rotacao, como definir a matriz de mudanca de base?
+\item Rotacao (geometrica) é linear
+  \begin{itemize}
+  \item Se sei como rotacionar base então a rotacao esta definida (assim funciona para
+    qualquer transformação linear)
+  \end{itemize}
+\end{itemize}
+
+\begin{pbm}
+  Rotacionar um conjunto de pontos 2D no sentido anti-horário em torno da origem.
+\end{pbm}
+
+\paragraph{Solução.} 
+\begin{center}
+\includegraphics[scale=1.5]{figs/rotation-2D.pdf}
+\end{center}
+\begin{itemize}
+\item Primeiro, o problema geométrico é dotado de uma notação símbólica
+\item Seja o espaço vetorial o plano 2D ($\mathbb R^2$)
+\item A rotação é uma transformação linear do plano no plano, indicada por $\text{Rot}$
+\item Para chegarmos a números (afinal, o curso é \emph{numérico}), precisamos especificar coordenadas.  Seja o sistema de coordenadas indicado por uma base $E = \{e_1, e_2\}$ e
+origem $O$. 
+\item A rotação será especificada por um ângulo $\theta$ medido a partir de
+  $e_1$, no sentido anti-horário.
+\item Para rotacionar o objeto (conjunto de pontos), precisamos saber como
+  rotacionar um ponto. Em seguida, aplicamos o mesmo procedimento a todos os
+  pontos. 
+\item Pelo diagrama acima, a rotação de um ponto em $e_1$ é $(\cos\theta, \sin\theta)^\top$, e
+  de um ponto em $e_2$ é $(-\sin\theta,\cos\theta)^\top$.
+\item Como vimos, basta colocar esses vetores na coluna da matriz de rotação:
+\[
+  R_\theta = \mathcal M_E^E(\text{Rot}) = 
+\begin{bmatrix} 
+\cos\theta & -\sin\theta\\
+\sin\theta &  \cos\theta
+\end{bmatrix}
+\]
+\item O sistema de
+coordenadas não é rotacionado; apenas os pontos do plano são rotacionados,
+fixando-se o sistema de coordenadas. 
+\item Isso é modelado pela notação simbólica como $\mathcal M_E^E(\text{Rot})$, onde a base é fixa, e a
+  transformação é $\text{Rot}$.
+\item Seguindo-se a notação e o raciocínio de forma cuidadosa, a dúvida usual
+  quanto ao sinal de $\sin\theta$ na matriz desaparece. Controle a ansiedade!
+\item Outra vantagem é que o mesmo método funciona para qualquer dimensão (3D,
+  4D, etc)
+\end{itemize}
+
+A seguinte idéia vale para montar a representação numérica de uma matriz de
+rotação em qualquer dimensão:
+\begin{prop}
+As \emph{colunas} duma matriz de rotação são a rotação dos vetores base
+$e_1, \ldots, e_n$, escritas nesta própria base.
+As \emph{linhas} da matriz de rotação são os vetores unitários que são levados
+aos vetores base \emph{após} a rotação.
+\end{prop}
+
+\subsection{Rotações 3D}
+
+\begin{itemize}
+\item A primeira dificuldade em definir os números de matrizes de rotação 3D é
+  definir quais ângulos geométricos são positivos (rotações anti-horárias)
+\end{itemize}<++>
+
+\begin{defi}(orientação) Uma base é dita \emph{de mão-direita} quando as
+  rotações por ângulos positivos são tais que, olhando-se de um vetor base em
+  direção à origem, uma rotação anti-horária por $+90^o$ leva um eixo positivo em
+  outro eixo positivo.
+\end{defi}
+
+\begin{itemize}
+\item As regras da mão direita vistas em cursos de física permitem definir
+  na prática a orientação de uma base
+\item O que nos interessa é a seguinte tabela:
+\end{itemize}
+\begin{center}
+\begin{tabular}{c c} 
+Se o eixo de rotação é & A direção de rotação por ângulo positivo é\\
+$x$	& $y \to z$ \\
+$y$	& $z \to x$ \\
+$z$	& $x \to y$ 
+\end{tabular}
+\end{center}
+
+Como revisão, a figura abaixo ilustra os graus de liberdade de uma rotação e
+seus nomes em inglês, no caso de um drone
+\begin{center}
+  \includegraphics[scale=0.8]{figs/yaw-pitch-roll.jpg}
+\end{center}
