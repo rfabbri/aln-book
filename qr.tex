@@ -1,0 +1,131 @@
+\mynewpage
+\chapter{Decomposição QR}
+
+\section*{Objetivos}
+\begin{itemize}
+\item Principais algoritmos de decomposição QR
+\end{itemize}
+
+\section*{Vimos} -- revisar conceitos da aula passada
+\begin{itemize}
+\item Vimos a decomposição SVD. 
+\item A decomposição QR é um passo importante em muitos outros algoritmos,
+  além de ser melhor em casos específicos
+\end{itemize}
+
+
+\section{Revisão de matrizes ortogonais}
+
+\begin{itemize}
+\item Uma matriz quadrada $U$ é ortogonal se $U^\top U = U U^\top = I$
+\item Propriedade: $\det U = \pm 1$
+\item Matrizes de rotação são matrizes com determinante $+1$
+\item Matrizes ortogonais preservam produto interno e norma: $(Ux)^\top Ux = x^\top U^\top U x =
+  x^\top x$
+\end{itemize}
+
+\section{Decomposiçào QR por matrizes Givens}
+
+\begin{defi}
+  A decomposição QR de uma matriz $A$ é da forma:
+  \begin{center}
+  \includegraphics[scale=0.6]{figs/qr.pdf}
+  \end{center}
+\end{defi}
+\begin{itemize}
+\item Existem também decomposições similares à QR, todas chamadas ``QR'' em um sentido
+amplo: QL, LQ, RQ, onde ``L'' é triangular inferior (de ``left /
+lower-triangular'').
+\item Antes de entrar em detalhes tétnicos, vejamos um algoritmo simples para matrizes $3\times
+  3$ usando matrizes especiais chamadas ``Givens''
+\end{itemize}
+
+\begin{defi}
+  Uma matriz Givens de rotação é uma rotação em torno de um dos eixos $x, y$ ou
+  $z$:
+  \begin{equation}
+    Q_x =
+    \begin{bmatrix}
+      1 & 0 & 0\\
+      0 & c & -s\\
+      0 & s & c
+    \end{bmatrix},\ \ 
+    Q_y =
+    \begin{bmatrix}
+      c & 0 & s\\
+      0 & 1 & 0\\
+      -s & 0 & c
+    \end{bmatrix},\ \ 
+    Q_z =
+    \begin{bmatrix}
+      c & -s & 0\\
+      s & c & 0\\
+      0 & 0 & 1
+    \end{bmatrix}
+  \end{equation},
+  onde $c = \cos \theta$ e $s = sen \theta$.
+\end{defi}
+
+\begin{itemize}
+\item 
+Ao fazer a operação $A\cdot Q_z$ para uma matriz $A$, sua última coluna não
+muda, e as duas primeiras é combinação linear das duas primeiras de $A$.
+\item (multiplicar $AQ_z$ explicitamente para constatar isso)
+\item Podemos escolher $\theta$ de forma a zerar qualquer entrada desejada das
+primeiras colunas
+\item Por exemplo, para setar o elemento (2,1) do resultado para zero,
+  \begin{equation}
+    \begin{bmatrix}
+      a_{11} & a_{12} & a_{13}\\
+      a_{21} & a_{22} & a_{23}\\
+      a_{31} & a_{32} & a_{33}
+    \end{bmatrix}
+    \begin{bmatrix}
+      c & -s & 0\\
+      s & c & 0\\
+      0 & 0 & 1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      c a_{11} + s a_{12} & -s a_{11} +c a_{12} & a_{13}\\
+      c a_{21} + s a_{22} & -s a_{21} +c a_{22} & a_{23}\\
+      c a_{31} + s a_{32} & -s a_{31} +c a_{32} & a_{33}\\
+    \end{bmatrix}.
+  \end{equation}
+  Impondo
+\begin{empheq}[left=\empheqlbrace]{align}
+  &c a_{21} + s a_{22} = 0\\
+  &c^2 + s^2 = 1,
+\end{empheq}
+encontramos $c$ e $s$.
+\end{itemize}
+
+\subsection{Estratégia de Algoritmo RQ por matrizes Givens}
+\begin{itemize}
+\item Iremos descrever uma estratégia para o algoritmo RQ, sendo o QR análogo.
+\item Zerar a parte inferior da matriz, uma entrada por vez, multiplicando-se
+  por matrizes Givens, cuidando-se para não modificar as entradas que já foram
+  anuladas
+\end{itemize}
+
+\begin{algorithm}
+  \caption{Decomposição RQ por matrizes Givens}
+  \textbf{Entrada:} matriz $3\times 3$ A
+  
+  \textbf{Saída:} $R$ e $Q$ tal que $A = RQ$\\
+  \ \\
+  \emph{início}
+  \begin{enumerate}
+  \item Multiplica-se por $Q_x$ tal que $A_{32} \to 0$ 
+  \item Multiplica-se por $Q_y$ tal que $A_{31} \to 0$ (isso não muda
+      $A_{32}$ pois não afeta a coluna 2
+    \item Multiplica-se por $Q_z$ tal que $A_{21} \to 0$ ($A_{31}$ e $A_{32}$
+      permanecem zeradas, já que as primeiras colunas são substituídas por
+    combinações lineares delas mesmas)
+  \item Observação: outras sequências de rotações Givens podem também resultar na
+  mesma coisa
+  \item $AQ_x Q_y Q_z = R \implies A = R Q^\top_z Q^\top_y Q^\top_x = RQ$
+  \end{enumerate}
+  \emph{fim}
+\end{algorithm}
+
