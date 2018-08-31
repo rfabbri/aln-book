@@ -144,3 +144,39 @@ Assim:
   \end{equation}
 \end{itemize}
 
+\section*{Solução aproximada por SVD: método prático}
+Resolver o sistema aproximado
+\begin{equation}
+  Ax \approx 0, \ \ \ \ \text{ e } |x| = 1,
+\end{equation}
+é o mesmo que exigir que $Ax$ é pequeno. Ou seja, queremos resolver o seguinte
+problema de otimização
+\begin{equation}
+  \argmin_{|x|=1} |Ax|.
+\end{equation}
+\begin{itemize}
+\item Se imaginarmos $x$ como um círculo ou esfera unitária, $|Ax|$ será mínimo
+  na direção do vetor singular correspondente ao menor valor singular, ou seja,
+  basta calcular a SVD. (isto foi visto intuitivamente nas aulas anteriores)
+\item Algebricamente, temos que, pelo SVD de $A$:
+  \begin{equation}
+    |Ax| = |V\Lambda U^\top x| = |\Lambda U^\top x|,
+  \end{equation}
+  onde a última passagem se deve ao fato de $V$ ser ortogonal, ou seja, não
+  altera a norma.
+\item Logo, queremos minimizar
+  \begin{equation}
+    |\Lambda U^\top x| \ \ \ \text{ tal que } |x| = 1
+  \end{equation}
+\item Como $|x| = |U^\top x|$, podemos definir $y \doteq U^\top x$. 
+\item Então, queremos minimizar
+  \begin{equation}
+    |\Lambda y| \ \ \ \text{ tal que } |y| = 1.
+  \end{equation}
+\item Como $\Lambda$ é diagonal, e os algoritmos retornam os valores singulares
+  $\sigma_i$ na ordem decrescente, então a solução é 
+  \begin{equation}
+    y = \begin{bmatrix}0 \\ 0 \\ \vdots\\ 1\end{bmatrix}
+  \end{equation}
+  
+\end{itemize}
