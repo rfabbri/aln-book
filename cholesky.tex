@@ -104,3 +104,47 @@
     \end{itemize}
   \end{enumerate}
 \end{proof}
+
+Vejamos um primeiro algoritmo para decomposição de Cholesky de matrizes $3\times
+3$:
+
+\begin{algorithm}
+  \caption{Algoritmo de Cholesky-Banachiewicz}
+  \textbf{Entrada:} matriz $3\times 3$ A
+  
+  \textbf{Saída:} matriz $3\times 3$ $K$ tal que $A = KK^\top$\\
+  \ \\
+  \emph{início}
+  \begin{enumerate}
+  \item Suponha $K$ triangular inferior $L$ e multiplique as matrizes:
+  \begin{align}
+    A &= LL^\top =
+    \begin{bmatrix}
+      L_{11} & 0 & 0\\
+      L_{21} & L_{22} & 0\\
+      L_{31} & L_{32} & L_{33}
+    \end{bmatrix}
+    \begin{bmatrix}
+      L_{11} & L_{21} & L_{31}\\
+      0 & L_{22} & L_{32}\\
+      0 & 0 & L_{33}
+    \end{bmatrix} = \\
+    &= \begin{bmatrix}
+      L_{11}^2 & \bullet & \bullet\\
+      L_{21}L_{11} & L_{21}^2 + L_{22}^2 & \bullet\\
+      L_{31}L_{11} & L_{31}L_{21} + L_{32}L_{22} & L_{31}^2 + L_{31}^2 +
+      L_{33}^2 & L_{33}
+    \end{bmatrix}.
+  \end{align}
+  Onde os símbolos ``$\bullet$'' denotam entradas simétricas.
+\item Resolve-se os $L_{ij}$'s em termos de $A_{ij}$ linha por linha, iniciando
+  pelo canto superior esquerdo:
+  \begin{align}
+    L_{jj} &= \sqrt{A_{jj} - \sum_{k=1}^{j-1} L_{jk}^2} > 0, \ \ \text{se $A$ é
+    positiva definida}\\
+    L_{ij} &= \frac{1}{L_{jj}} \left( A_{ij} - \sum_{k=1}{j-1} L_{ik}L_{jk}
+    \right),\ \ \  \text{ para $i > j$}
+  \end{align}
+  \end{enumerate}
+  \emph{fim}
+\end{algorithm}
