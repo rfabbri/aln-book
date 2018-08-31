@@ -1,0 +1,146 @@
+\mynewpage
+\chapter{Resolvendo sistemas lineares por SVD}
+\epigraph{SVD is the answer.\\What is your problem?}{Joseph Mundy}
+
+
+\section*{Objetivos}
+\begin{itemize}
+\item Técnica genérica para resolver sistemas lineares
+\item Técnica mais útil em engenharia para sistemas sobredeterminados por
+  mínimos quadrados usando SVD
+\item Solução aproximada de equações contraditórias típicas de medições com
+  erro
+\item Técnica a ser vista não é a mais eficiente, mas é a mais usada antes de
+  algoritmos mais específicos
+\item Foco será no procedimento geral, sendo a teoria aprofundada adiante
+\end{itemize}
+
+\section*{Vimos} -- revisar conceitos da aula passada
+\begin{itemize}
+\item Toda matriz $A = V \Lambda U^\top$ (SVD) (ver Aula~\ref{ch:intro})
+\item Dado um algoritmo que realize esta decomposição na sua linguagem favorita,
+  como resolver sistemas lineares?
+\item Não será necessário saber o algoritmo SVD em si, apenas entradas e saídas.
+\end{itemize}
+
+\section*{Introdução}
+
+\begin{itemize} \item 
+Central em álgebra linear numérica é resolver sistemas da forma
+\begin{equation}
+  Ax = b.
+\end{equation}
+\item Em Scilab ou Matlab, por exemplo, pode-se usar a barra invertida para cegamente tentar
+obter uma solução:
+\begin{equation}
+  x = A\ b,
+\end{equation}
+onde a notação com a barra invertida ``\'' sugere que $x$ é $b$ dividido por
+$A$, de alguma forma. 
+\item O Scilab nesse caso escolhe o melhor algoritmo, e em geral
+  será o SVD, conforme veremos nesta seção.
+\end{itemize}
+
+\begin{itemize}
+\item Na prática, a matriz $A$ e o vetor $b$ consitem de medições com erro, repetidas
+inúmeras vezes. 
+\item Devido a esse erro, não há um $x$ que exatamente satisfaça $Ax = b$.
+\item Nesse caso, queremos um $x$ que satifaça $Ax = b$ aproximadamente. Ou
+  seja:
+  \begin{equation}
+    Ax \approx b,
+  \end{equation}
+  onde ``$\approx$'' aqui significa aproximado.
+\item A técnica a ser descrita nesta aula é uma maneira prática de usar o SVD.
+\item Muitas vezes, uma biblioteca em C terá o algoritmo SVD, porém pode não ter
+  outras funções práticas para solução de sistemas lineares.
+\item Nesta aula, veremos uma técnica que transforma a equação acima numa
+  equação homogênea do tipo $Ax \approx 0$, e em seguida resolve um problema de
+  otimização com SVD.
+\end{itemize}
+
+\section*{Homogeneizando Sistemas Lineares}
+
+\begin{itemize}
+\item Dado um sistema $Ax = b$, podemos gerar um sistema equivalente $\tilde A \tilde
+x = 0$. Dizemos que ``homogeneizamos o sistema''. 
+\item O truque tem a ver com coordenadas homogêneas, mas o procedimento a seguir
+  pode ser compreendido mesmo sem lembrar da Aula~\ref{ch:homogeneas}.
+\item Suponha que a matriz $A$ seja $2\times 2$. O sistema $Ax = b$ ficaria:
+\begin{equation}
+\left\{
+\begin{aligned}
+  &a_{11}x_1 + a_{12}x_2 = b_1\\
+  &a_{21}x_1 + a_{22}x_2 = b_2
+\end{aligned}
+\right.
+\end{equation}
+\item Note que apenas $b_1$ e $b_2$ não estão acompanhados de variáveis
+\item Podemos fazer todos os termos conterem variáveis (homogêneos)
+  multiplicando-se todas as equações (em ambos os lados) por uma nova variável
+  $w$, sem alterar o resultado:
+\begin{equation}
+\left\{
+\begin{aligned}
+  &a_{11}x_1w + a_{12}x_2w = b_1w\\
+  &a_{21}x_1w + a_{22}x_2w = b_2w
+\end{aligned}
+\right.
+\end{equation}
+Agora, podemos definir novas variáveis $\tilde x_1 = x_1w$, $\tilde x_2 = x_2w$, de
+forma que nosso novo vetor $\tilde x$ fique:
+\begin{equation}
+  \begin{bmatrix}
+  \tilde x_1\\
+  \tilde x_2\\
+  \tilde x_3\\
+  \end{bmatrix} \doteq 
+  \begin{bmatrix}
+  w x_1\\
+  w x_2\\
+  w
+  \end{bmatrix} = w 
+  \begin{bmatrix}
+  x_1\\
+  x_2\\
+  1
+\end{bmatrix}.
+\end{equation}
+Assim:
+\begin{equation}
+  \begin{bmatrix}
+    a_{11} & a_{12} & -b_1\\
+    a_{21} & a_{22} & -b_2
+  \end{bmatrix}
+  \begin{bmatrix}
+  \tilde x_1\\
+  \tilde x_2\\
+  \tilde x_3\\
+  \end{bmatrix}
+  = 0
+\end{equation}
+\item Tal equação é homogênea:
+  \begin{equation}
+    \tilde A\tilde x = 0
+  \end{equation}
+  A solução será o Kernel de $A$, $\ker A$ (núcleo de A).
+\item Logo, usando coordenadas homogêneas, podemos reduzir qualquer sistema
+  linear não-homogêneo a um sistema linear homgoêneo
+\item Torna-se central, então, saber resolver:
+  \begin{equation}
+    Ax = 0, \ \ \ \ \text{ para } |x| \neq 0
+  \end{equation}
+\item Por exemplo, exigindo $|x| = 1$
+\item Uma vez encontrado algum elemento $\tilde x$ do espaço de soluçao $\ker
+  \tilde A$, para um sistema $\tilde A\tilde x =0$, podemos obter a solução para
+  os sistema original $Ax=b$ 
+\item Basta normalizar $\tilde x$ para obter $w = 1$ (sistema original), o que
+  ocorre fazendo-se:
+  \begin{equation}
+  x = \begin{bmatrix}
+  \tilde x_1 / \tilde x_3\\
+  \tilde x_2 / \tilde x_3\\
+  \end{bmatrix}
+  \end{equation}
+\end{itemize}
+
