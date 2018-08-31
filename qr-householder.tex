@@ -15,7 +15,12 @@
   \begin{equation}
     H_v = I - 2 \frac{vv^\top}{v^\top v}
   \end{equation}
-\item Note que é ortogonal e simétrica (mostrar em aula)
+\item $H_v$ aplicada a um vetor $a$ é:
+  \begin{equation}
+  H_v a = (I - 2 \frac{vv^\top}{v^\top v})a = a - 2 \frac{v(v^\top a)}{v^\top v}
+  \end{equation}
+  
+\item Note que $H_v$ é ortogonal e simétrica (mostrar em aula)
 \end{itemize}
 
 \begin{prop}
@@ -73,8 +78,38 @@ Tais matrizes Householder adequadas são da seguinte forma:
     Q_1 A &= 
     \begin{blockarray}{(c|ccc)}
       \alpha_1 & \bullet & \dots & \bullet\\
-      0 & \BAmulticolumn{3}{c}{\multirow{3}{*}{$A$}}\\
+      0 & \BAmulticolumn{3}{c}{\multirow{3}{*}{$A'$}}\\
     \vdots &&&\\
       0 &&&
     \end{blockarray}
 \end{align}
+
+\begin{itemize}
+\item Delete a primeira linha e a primeira coluna de $Q_1 A$ para obter $A'$
+\item Aplica-se a matriz Householder para $A'$, obtendo-se $Q_2'$
+\item Faça-a operar em $A$ expandindo-se com 1's na diagonal:
+  \begin{equation}
+    \begin{bmatrix}
+      I_{k-1} & 0\\
+      0 & Q_k'
+    \end{bmatrix}
+  \end{equation}
+\item Assim:
+  \begin{align}
+    R &= Q_t \dots Q_2 Q_1 A,\\
+    A &= QR,
+    Q &= Q_1^\top Q_2^\top\dots Q_t^\top
+  \end{align}
+\end{itemize}
+
+\begin{exer}
+  (em sala de aula) Realize a decomposição QR da seguintes matriz via
+  matriz Givens e via Householder:
+  \begin{equation}
+    \begin{bmatrix}
+      12 & 91 & 4\\
+      6 & 167 & -68\\
+      -4 & 24 &-41
+    \end{bmatrix}
+  \end{equation}
+\end{exer}
