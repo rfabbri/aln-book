@@ -182,10 +182,15 @@ aos vetores base \emph{após} a rotação.
 
 \subsection{Rotações 3D}
 
+\begin{pbm}
+  Rotacionar uma \emph{base} 3D em torno da origem, e escrever a matriz que
+  realiza a mudança de base para um ponto arbitrário.
+\end{pbm}
+
 \begin{itemize}
 \item A primeira dificuldade em definir os números de matrizes de rotação 3D é
   definir quais ângulos geométricos são positivos (rotações anti-horárias)
-\end{itemize}<++>
+\end{itemize}
 
 \begin{defi}(orientação) Uma base é dita \emph{de mão-direita} quando as
   rotações por ângulos positivos são tais que, olhando-se de um vetor base em
@@ -212,3 +217,60 @@ seus nomes em inglês, no caso de um drone
 \begin{center}
   \includegraphics[scale=0.8]{figs/yaw-pitch-roll.jpg}
 \end{center}
+Em termos de tais ângulos, a matriz de rotação $R = \mathcal M^A_B(id)$ (neste
+caso, de mudança de base, e não de uma rotação geométrica, pois os pontos são
+fixos) pode ser decomposta como 
+$R(\theta,\phi,\psi) =
+R_z(\theta)R_y(\phi)R_x(\psi)$, onde
+\begin{align}
+R_z(\theta) &= \begin{bmatrix}
+\cos\theta & \sin\theta & 0\\
+-\sin\theta & \cos\theta & 0\\
+0 & 0 & 1
+\end{bmatrix}\\
+%
+R_y(\phi) &= \begin{bmatrix}
+\cos\phi & 0 & -\sin\phi\\
+0 & 1 & 0\\
+\sin\phi &0 &\cos\phi
+\end{bmatrix}\\
+%
+R_x(\psi) &= \begin{bmatrix}
+1 & 0 & 0\\
+0 & \cos\psi & \sin\psi\\
+0 &-\sin\psi & \cos\psi
+\end{bmatrix}
+\end{align}
+Note que cada coluna é obtida através da nossa notação:
+\begin{equation}
+  \mathcal X_B(v) = \mathcal M^A_B(id)\mathcal X_A(v),
+\end{equation}
+aplicada aos vetores base, onde a transformação linear $L$ aqui é $id$ pois
+estamos fixando os pontos, mas estamos realizando uma mudança de base de $A$
+para $B$. 
+\begin{itemize}
+\item A coluna i da matriz é então $\mathcal X_B(a_i)$. Em outras palavras,
+  nossa tarefa numérica é escrever cada vetor base $a_i$ \emph{não-rotacionado} em termos
+  dos vetores \emph{rotacionados}.
+\end{itemize}
+\begin{exer}
+  Explique detalhadamente como obter a primeira coluna de $R_z(\theta)$.
+\end{exer}
+
+A forma final de $R(\theta,\phi,\psi) = R_z(\theta)R_y(\phi)R_x(\psi)$ para
+uma rotação arbitrária seria: 
+\begin{align}
+\begin{bmatrix}
+\cos\theta\cos\phi & \cos\theta\sin\phi\sin\psi + \sin\theta\cos\psi & 
+-\cos\theta\sin\phi\cos\psi + \sin\theta\sin\psi\\
+%
+-\sin\theta\cos\phi & -\sin\theta\sin\phi\sin\psi + \cos\theta\cos\psi &
+\sin\theta\sin\phi\cos\psi + \cos\theta\sin\psi\\
+%
+\sin\phi & -\cos\phi\sin\psi & \cos\phi\cos\psi
+\end{bmatrix}
+\end{align}
+\begin{exer}
+Mostre que esta é a inversa da matriz que realiza a rotação de pontos,
+mantendo-se a base fixa.
+\end{exer}
