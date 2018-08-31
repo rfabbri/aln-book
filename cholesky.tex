@@ -1,5 +1,5 @@
 \mynewpage
-\chapter{Decomposição Cholesky}
+\chapter{Decomposição de Cholesky}
 
 \section*{Objetivos}
 \begin{itemize}
@@ -15,3 +15,92 @@
   encontrar $K$ tal que $A = K^\top K$ ou $A = K K^\top$
 \end{itemize}
 
+\begin{itemize}
+\item A decomposição de Cholesky é um tipo de raíz quadrada de matrizes 
+\item É uma raíz quadrada útil quando a matriz é simétrica, positiva definida
+  (revisaremos a definição)
+  \begin{itemize}
+  \item Muitos casos práticos são desse tipo
+  \item Nesses casos, Cholesky é bem mais rápido e estável que alternativas
+  \end{itemize}
+\item Esta decomposição é parte do ferramental fundamental de álgebra linear
+  numérica
+\item Dada uma matriz $A$, a decomposição de cholesky retorna $K$ tal que $A =
+  KK^\top$, se possível
+\item Se $A$ fosse um número, seria exigido que $A$ fosse positivo (e real),
+  caso quisessemos uma raíz quadrada $K$ real
+\item Similarmente, para uma matriz $A$ quadrada $n \times n$, exigimos que
+  seja:
+  
+  \begin{tabular}{c | c}
+    \textbf{Condição na matriz} & \textbf{Condição correspondente nos
+    autovalores}\\\hline\hline
+  Simétrica & autovalores reais\\
+  Positiva-definida & autovalores positivos
+  \end{tabular}
+\end{itemize}
+
+\begin{defi}
+  $A$ é simétrica positiva-definida se todos seus autovalores são positivos
+\end{defi}
+
+\begin{teo} Os seguintes fatos são verdadeiros:
+  \begin{enumerate}
+  \item Uma matriz simétrica $A$ é positiva-definida $\iff x^\top A x > 0,
+    \forall x \neq 0$
+  \item Uma matriz $A$ é simétrica positiva definida $\implies$ existe uma única
+    matriz $K$ triangular superior e real com diagonal positiva tal que $A =
+    KK^\top$
+  \end{enumerate}
+\end{teo}
+
+\begin{proof}\ \\
+  
+  \begin{enumerate}
+  \item 
+    \begin{enumerate}
+    \item Por decomposição em autovalores e autovetores, temos $A = U D U^\top$
+    \item Ida: 
+      \begin{equation}
+        x^\top U D U^\top x = y D y^\top = \sum d_{ii}y_i^2 > 0, \forall x
+      \end{equation}
+    \item Volta:
+      \begin{equation}
+        x^\top A x > 0 \implies x^\top U D U^\top x > 0 \implies y^\top D y > 0,
+        \forall y \text { onde } y = x^\top U.
+      \end{equation}
+      Colocando $y = e_i$, temos $d_{ii} > 0$
+    \end{enumerate}
+  \item 
+    
+    \begin{itemize}
+    \item $A = U D U^\top$, com $D$ real positiva, então tomemos a ``raiz quadrada
+    de D'', 
+    \begin{equation}
+      D = E E^\top, \ \ \ \text{com } E \text{ diagonal.}
+    \end{equation}
+    \item Logo, $A = VV^\top$, onde $V = UE$. 
+    \item A matriz $V$ não é necessariamente triangular superior. 
+    \item Aplica-se, então, a decomposição RQ da forma
+      \begin{equation}
+        V = KQ,
+      \end{equation}
+      o que dá 
+      \begin{equation}
+        A  = VV^\top = KQQ^\top K^\top = K K^\top
+      \end{equation}
+    \item Se as diagonais não forem positivas, basta multiplicar $K$ à direita
+      por uma matriz com $\pm 1$'s nas diagonais -- isso não afetará o produto
+      $K^\top K$
+    \item $K$ é única pois:
+    \item Sejam $K_1$, $K_2$ com $K_1K_1^\top = K_2K_2^\top$. Então 
+      \begin{equation}
+        K_2^{-1}K = K_2^\top K_1^{-\top} = D,
+      \end{equation}
+      duas matrizes tiangualres superiores e inferiores, respectivamente.
+    \item Ademais, $K_2^{-1}K_1$ é igual a $(K_2^\top K_1^{-\top})^{-\top}$
+    \item Logo, $D = D^{-\top}$ sendo, portanto, com entradas $\pm 1$. Como $K_1$
+      e $K_2$ têm diagonal positiva, este sinal é positivo.
+    \end{itemize}
+  \end{enumerate}
+\end{proof}
