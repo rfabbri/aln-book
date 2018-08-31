@@ -176,7 +176,23 @@ problema de otimização
 \item Como $\Lambda$ é diagonal, e os algoritmos retornam os valores singulares
   $\sigma_i$ na ordem decrescente, então a solução é 
   \begin{equation}
-    y = \begin{bmatrix}0 \\ 0 \\ \vdots\\ 1\end{bmatrix}
+    y = \begin{bmatrix}0 \\ 0 \\ \vdots\\ 1
+    \end{bmatrix}
   \end{equation}
-  
+\item Dessa forma, tínhamos
+  \begin{equation}
+    y = U^\top x \implies x = Uy
+  \end{equation}
+\item Logo $x$ é a última coluna de $U$ na decomposição SVD de $A$.
 \end{itemize}
+
+O método padrão SVD para resolver $Ax \approx b $ para $n$ variáveis
+$x_1,\dots,x_n$ pode ser resumido da seguinte forma
+\begin{enumerate}
+\item Homogeneiza-se o sistema para $\tilde A\tilde x \approx 0$, que terá $n+1$
+  variaveis
+\item Calcula-se o SVD de $\tilde A$
+\item A última coluna de $U$ é o $\tilde x$ que resolve $\tilde A\tilde x \approx 0$ 
+\item Obtém-se $x$ a partir de $\tilde x$ ignorando-se a última coordenada do
+  vetor normalizado $\tilde x / \tilde x_{n+1}$
+\end{enumerate}
