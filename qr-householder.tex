@@ -67,3 +67,14 @@ podemos triangular a matriz:
 que é a decomposição QR de $A$.
 
 Tais matrizes Householder adequadas são da seguinte forma:
+\begin{align}
+  Q_1 &= H_v, \ \ \ \text{com $v$ definido em relação a $x$ sendo a primeira
+  coluna de $A$}\nonumber\\
+    Q_1 A &= 
+    \begin{blockarray}{(c|ccc)}
+      \alpha_1 & \bullet & \dots & \bullet\\
+      0 & \BAmulticolumn{3}{c}{\multirow{3}{*}{$A$}}\\
+    \vdots &&&\\
+      0 &&&
+    \end{blockarray}
+\end{align}
