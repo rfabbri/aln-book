@@ -12,14 +12,14 @@ solta adequada a uma revisão.
 \section*{Observações Iniciais}
 \begin{itemize}
 \item A álgebra liner numérica começa com o conceito de escalares e coordenadas.
-\item Para haver coordenadas, é necessária a escolha da escolha de uma base
+\item Para haver coordenadas, é necessária a escolha de uma base
 \item O conceito de espaço vetorial (simbólico) permite isolar as operações
   que não dependem da escolha de uma base, daquelas que dependem.
 \end{itemize}
 
 \begin{defi} \emph{(Espaço Vetorial Simbólico)}
-Um espaço vetorial $\mathcal V$ sobre um corpo $K$ é uma tupla ordenada
-$\mathcal V = (V, K, +, \cdot)$ de quatro elementos:
+Um espaço vetorial $\mathcal V$ sobre um corpo $K$ é uma quádrupla 
+$\mathcal V = (V, K, +, \cdot)$ de elementos:
 \begin{empheq}[left=\mathcal V\ \ \empheqlbrace]{align}
   &V\text{: conjunto cujos elementos são chamados ``vetores''}\nonumber\\
   &K\text{: conjunto cujos elementos são chamados ``escalares''}\nonumber\\
@@ -40,13 +40,17 @@ onde ``+'' satisfaz:
 e onde ``$\cdot$'' satisfaz:
 \begin{align}
   \cdot: K \times V &\to V\\
-  (\alpha,w) &\mapsto v+w,
+  (\alpha,w) &\mapsto \alpha\cdot w,
 \end{align}
 \begin{align}
-  &v + w = w + v\\
-  &v + (u + w) = (v + u) + w\\
-  &\exists !\ 0 \in V \text{ tal que } 0 + v = v,\ \forall v\in V\\
-  &\forall v \in V, \exists !\ w \in V \text{ tal que } v + w = 0, \text{simbolizado por } -v
+&0v = 0  &&\text{\footnotesize o escalar 0 vezes um vetor é o vetor nulo}\\
+&1v = v  &&\text{\footnotesize o escalar 1 vezes um vetor é o próprio vetor}\\
+&(\alpha\beta)v = \alpha(\beta v) && \text{\footnotesize multiplicação escalar $\cdot$ escalar
+é associativa com a escalar $\cdot $ vetor}\\
+&\alpha(v + w) = \alpha v + \alpha w && \text{\footnotesize escalar $\cdot$ vetor
+é distributiva com vetor + vetor}\\
+&(\alpha+\beta)v = \alpha v +\beta v && \text{\footnotesize escalar + escalar é
+distributiva com escalar $\cdot$ vetor}.
 \end{align}
 e $K$ satisfaz as propriedades de uma estrutura algébridca chamada ``corpo'',
 que abstrai as operações de multiplicação, soma, subtração e divisão possíveis
