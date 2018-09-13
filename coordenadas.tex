@@ -70,9 +70,9 @@ com números, geralmente $\mathbb R$ ou $\mathbb C$.
   escalar. 
 \item No entanto, a teoria simbólica está mais próxima do conceitual que a
   teoria numérica, pois isola os fatores que não dependem da escolha de um
-  sistema de coordenada.
+  sistema de coordenadas.
 \item A conexão com o mundo numérico consiste em associar números a vetores.
-  Para tanto, é importante definir base e, para isso, dependência linear.
+  Para tanto, é importante definir base e, para isso, independência linear.
 \item Iremos assumir que $V$ e $W$ são espaços vetoriais.
 \end{itemize}
 
@@ -80,17 +80,21 @@ com números, geralmente $\mathbb R$ ou $\mathbb C$.
   Uma combinação linear de $v_1,\dots,v_n$, $v_i \in V$, é uma expressão da
   forma
   \begin{equation}
-    \alpha_1 v_1 + \dots + \alpha_n v_n = \sum \alpha_i v_i.
+    \alpha_1 v_1 + \dots + \alpha_n v_n,
+  \end{equation}
+  ou, mais sucintamente, 
+  \begin{equation}
+  \sum \alpha_i v_i.
   \end{equation}
 \end{defi}
 \begin{itemize}
-\item Notação: quando não há ambuguidade, iremos omitir os índices dos
+\item Notação: quando não há ambiguidade, iremos omitir os índices dos
   somatórios $\sum$.
 \end{itemize}
 \begin{defi}
-  Os vetores $v_1,\dots,v_n$ são ditos linearmente indepententes (L.I.) se
+  Os vetores $v_1,\dots,v_n$ são ditos linearmente independentes (L.I.) se
   \begin{equation}
-    \sum \alpha_i v_i\ \  \iff\ \  \alpha_i = 0\,\ i=1,\dots,n
+    \sum \alpha_i v_i\ \  \iff\ \  \alpha_i = 0,\,\ \ \qquad   i=1,\dots,n
   \end{equation}
 \end{defi}
 
@@ -109,7 +113,7 @@ com números, geralmente $\mathbb R$ ou $\mathbb C$.
 
 Finalmente, chegamos ao conceito de coordenadas (numéricas) de um vetor:
 \begin{defi} \emph{(Coordenadas)} Dada uma base $B = \{v_1,\dots,v_n\}$ de $V$,
-então os números $\alpha_1,\dots,\alpha_n$ tal que
+então os números $\alpha_1,\dots,\alpha_n$ tais que que
   \begin{equation}
     v = \sum \alpha_i v_i
   \end{equation}
@@ -119,18 +123,20 @@ então os números $\alpha_1,\dots,\alpha_n$ tal que
   \mathcal X_B(v) = 
   \begin{bmatrix}
     \alpha_1\\
+    \vdots\\
     \alpha_n
   \end{bmatrix},
   \end{equation}
-  onde o símbolo ``chi'' $\mathcal X$ dever ser lido como ``coordenada de''.
+  onde o símbolo ``chi'' $\mathcal X$ deve ser lido como ``coordenada de''.
 \end{defi}
 
 \begin{itemize}
 \item Se pensarmos no vetor simbólico $v\in V$ visualmente como uma seta desenhada no plano, suas
-coordenadas são um vetor numérico $2$ números, sendo necessário definir a base
+coordenadas são um vetor numérico de $2$ números, sendo necessário definir a base
 (posição dos eixos $x$ e $y$).
 \item Fixada uma base, existe uma relação 1-1 entre vetores simbólicos $v$ e
-  vetores de $n$ números.
+  vetores de $n$ números.\footnote{Isto sempre funciona quando a dimensão de $V$ é
+  finita, o que assumiremos sem maiores preocupações.}
 \end{itemize}
 
 \begin{teo}
