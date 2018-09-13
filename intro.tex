@@ -48,7 +48,7 @@ Muitos matemáticos irão definir ``linear'' como a
   para todos vetores $u$ e $v$, e escalares $\alpha$.
 \end{defi}
 \begin{itemize}
-\item Tal definição, apesar de suscinta e formalmente elegante, tem pouca
+\item Tal definição, apesar de sucinta e formalmente elegante, tem pouca
   concretude imediata.
 \item ``Linear'' aqui significa apenas uma simplicidade formal, ou seja, as
   manipulações algébricas são simples.
@@ -59,7 +59,7 @@ Muitos matemáticos irão definir ``linear'' como a
 mais próxima do objetivo ou de aplicações reais. 
 
 No mundo real, o que observamos
-a princípio não é numérico nem simbólico: uma bola girando, um flúido em movimento, ou um feixe de nêutrons.
+a princípio não é numérico nem simbólico: uma bola girando, um fluido em movimento, ou um feixe de nêutrons.
 Muitas vezes, conceitos próximos da realidade, independentes das convenções de símbolos ou
 números, são difíceis de formalizar e, portanto, não são enfatizados na maioria
 dos cursos de álgebra linear.
@@ -74,7 +74,7 @@ dos cursos de álgebra linear.
 \item O esticamento pode ser realizado por fatores diferentes ao longo de eixos arbitrários, e inclui achatamentos
 \item Geralmente, esta definição é um teorema na teoria da álgebra linear, visto
   apenas no final de um primeiro curso.  Trata-se
-  do teorema do SVD -- \emph{Singular Value Decompositon}, ou decomposição em
+  do teorema da SVD -- \emph{Singular Value Decompositon}, ou decomposição em
   valores singulares. Trata-se de um análogo de autovalores e autovetores, e é o
   teorema mais importante a ser explorado neste curso.
 \item Como exemplo, temos a seguinte figura:
@@ -89,7 +89,7 @@ dos cursos de álgebra linear.
   não são meramente girados e esticados.
 \end{itemize}
 
-\paragraph{Numérico:} Já definimos no início da aula que uma matriz é a
+\paragraph{Numérico:} Já afirmamos no início da aula que uma matriz é a
 representação numérica de uma transformação linear, seja esta pensada pela
 definição geométrica ou simbólica. 
 \begin{itemize}
@@ -98,10 +98,10 @@ definição geométrica ou simbólica.
 \item Também revisaremos como encontrar os números em uma matriz para uma dada
   transformação linear
 \end{itemize}
-O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
+O teorema da SVD pode ser descrito numericamente em termos de matrizes:
 \begin{teo}\label{teo:svd:informal}
-  (SVD numerico - informal)
-  Toda matriz A de tamanho $m\times n$ pode ser escrita da forma:
+  (SVD numérico - informal)
+  Toda matriz A de tamanho $m\times n$ pode ser escrita na forma:
   \begin{center}
   \includegraphics[scale=0.5]{figs/svd-matricial.pdf}
   \end{center}
@@ -126,9 +126,9 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
    \end{bmatrix},
     \label{eq:diagonal}
   \end{equation}
-  as quais transformam pontos $(x,y,z)$ da seguinte forma:
+  as quais transformam pontos $p = (x,y,z)$ da seguinte forma:
   \begin{equation}
-    \Lambda = 
+    \Lambda p = 
     \begin{bmatrix}
      a & 0 & 0 \\
      0 & b & 0 \\
@@ -148,7 +148,7 @@ O teorema do SVD pode ser descrito numéricamente em termos de matrizes:
   \end{equation}
   ou seja, esticam cada ponto ao longo de eixos por fatores $a$, $b$ e $c$. 
 \item Cada fator de esticamento $a$, $b$ ou $c$ pode ser zero, o que faz com que
-  a matriz achate completamente uma das dimensões
+  a matriz achate completamente as direções (dimensões) correspondentes.
 \end{itemize}
 
 \paragraph{Observações}
@@ -206,7 +206,8 @@ limitadas?}
 
 \subsection*{Exercícios}
 \begin{enumerate}
-\item Explique como uma função $f: \mathbb R \to \mathbb R$, $y = f(x)$, seria
-  considerada linear, tanto em termos símbólicos e geométricos. Qual seria a
-  fórmula dessa função?
+\item Explique quando uma função $f: \mathbb R \to \mathbb R$, $x \mapsto f(x)$,
+  \ie, $y = f(x)$, seria
+  considerada linear, tanto em termos simbólicos quanto geométricos. Qual seria a
+  fórmula geral dessa função?
 \end{enumerate}
