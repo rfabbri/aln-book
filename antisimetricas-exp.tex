@@ -100,7 +100,12 @@ v_3
 Ademais:
 \begin{itemize}
 \item Se $\vec u$ é tal que $\|\vec u\| = 1$ e $U := \skewm{\vec u}$,
-  então $U^2 = uu^\top - I$ e $U^3 = -U$. Se $\|\vec u\| \neq 1$, a última
+  então 
+  \begin{equation}
+    \label{eq:power:anti}
+    U^2 = uu^\top - I \text{ e }  U^3 = -U.
+  \end{equation}
+   Se $\|\vec u\| \neq 1$, a última
   relação decorre de $U^3 = -\|u\|^2U=0$.
 \item Toda matriz é a soma de uma matriz simétrica e uma antissimétrica:
   \begin{equation}
@@ -162,7 +167,7 @@ i = 1,\dots,m.
   antissimétrica
 \item Logo, existe $\vec v$ tal que $A^\top \skewm{\vec u} A = \skewm{\vec v}$.
 \item Vamos tentar encontrar uma fórmula para $\skewm{\vec v}$ a partir de $A$ e $u$ a
-  seguir
+  seguir.
 \end{itemize}
 
 \begin{prop}\label{prop:skewmoperator}
@@ -187,4 +192,50 @@ não-inversível ou com determinante não-unitário?
 
 
 
+\section*{Exponenciais de Matrizes}
 
+\begin{itemize}
+\item 
+A função exponencial pode ser aplicada a matrizes tratando-se as matrizes como
+números na série de potências e usando multiplicação de matrizes.
+\begin{equation}
+R = \exp(A)  = e^A:= \sum_{k = 0}^{\infty} \frac{A^k}{k!} 
+= I + \sum_{k = 1}^{\infty} \frac{A^k}{k!} = I + A + \frac{A^2}{2} +
+\frac{A^3}{6} + \frac{A^4}{24} + \cdots
+\end{equation}
+\item Isso funciona mesmo com o produto de matrizes sendo não-comutativo, mas
+  por esta não-comutatividade as propriedades desta função exponencial tem
+  diferenças com o caso de números.
+\item A função exponencial é um exemplo de uma função de matrizes, e é
+  uma das funções de matrizes mais utilizadas em computação~\cite{Golub}.
+\item Exercício: se $A$ é antissimétrica, $exp(A)$ é uma matriz ortogonal.
+\item Exercicio: Ademais, $det(exp(A)) = +1$.
+\end{itemize}
+
+\begin{teo}(Fórmula de Rodrigues)
+  Para uma matriz anti-simétrica $A = \skewm{\vec v}$, a matriz de rotação $R$
+  pode ser calculada usando uma simplificação da série da função exponencial
+  \begin{equation}
+    R = e^A:= I + \frac{A}{\|v\|} \sin(\|v\|) + \frac{A^2}{\|v\|^2} (1 - \cos
+    (\|v\|)),
+  \end{equation}
+  a qual permite o cálculo usando apenas duas potências da matriz, e funções
+  trigonométricas de números reais.
+\end{teo}
+\begin{proof}
+  Usando as identidades~\eqref{eq:power:anti}, re-escreva a série de potência da
+  exponencial de matrizes em termos da séries de Taylor de seno e cosseno,
+  separando-se as potências ímpares das pares.
+\end{proof}
+\begin{itemize}
+\item A partir deste momento, após dar alguns exemplos para montar a intuição do
+  aluno, o instrutor pode dar uma ou duas aulas acerca da
+  análise de estabilidade do cálculo da exponencial de matrizes dado no
+  Golub, procurando simplificar a analise. Isto, acompanhado de revisão do
+  cálculo do mesmo algoritmo e de raízes para números reais.
+\item Este capítulo aborda um aspecto mais detalhado da álgebra linear numérica,
+  o que permite ao aluno comparar técnicas numéricas versus matriciais para
+  problemas de avaliação de funções, que são o gargalo de muitas técnicas mais
+  complexas da área.
+\item \todo{resta melhorar muito ainda esta aula, porém o esboço é este}
+\end{itemize}
