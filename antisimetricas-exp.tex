@@ -17,21 +17,21 @@
 
 \section*{Vimos} -- revisar conceitos da aula passada
 
-\section{Matrizes Anti-Simétricas}
+\section{Matrizes Antissimétricas}
 
 \begin{itemize}
-\item Será útil revisarmos matrizes anti-simétricas e aprofundar neste assunto
+\item Será útil revisarmos matrizes antissimétricas e aprofundar neste assunto
 \item Na Seção~\ref{sec:ortogonais:rev}, revisamos matrizes ortogonais que serão
   úteis como exemplos nesta seção.
-\item Resta-nos revisar matrizes anti-simétricas
-\item Matrizes anti-simétricas e ortogonais serão conectadas com 
+\item Resta-nos revisar matrizes antissimétricas
+\item Matrizes antissimétricas e ortogonais serão conectadas com 
 exponenciais de matrizes
 \item Métodos numéricos relacionados serão obtidos e analisados, permitindo o
   uso de matrizes simples para expressar e parametrizar matrizes mais complicadas.
 \end{itemize}
 
 \begin{itemize}
-\item Dado um vetor ${\bf v}=(v_1,v_2,v_3)^\top$, é possível construir uma matriz anti-simétrica com as componentes de ${\bf v}$ na forma
+\item Dado um vetor ${\bf v}=(v_1,v_2,v_3)^\top$, é possível construir uma matriz antissimétrica com as componentes de ${\bf v}$ na forma
 \begin{equation*}
 [{\bf v}]_\times=
 \begin{bmatrix}
@@ -47,19 +47,23 @@ vetorial por qualquer vetor $\vec v$ através de multiplicação de matriz:
 \begin{equation*}
 {\bf v} \times {\bf u} = [{\bf v}]_\times {\bf u} = ({\bf v}^\top [{\bf u}]_\times)^\top
 \end{equation*}
-\item Ademais, para toda matriz anti-simétrica $A$ existe um vetor $\vec v$ tal
+\item Ademais, para toda matriz antissimétrica $A$ existe um vetor $\vec v$ tal
   que $A = \skewm{\vec v}$.
 \item Tal representação matricial de um produto vetorial e a interpretação da
-  multiplicação por matriz anti-simétrica como tal tem grandes implicações práticas para
+  multiplicação por matriz antissimétrica como tal tem grandes implicações práticas para
   o uso de técnicas matriciais na solução de equações envolvendo 3 dimensões
   (mecânica/cinemática).
 \item O produto vetorial entre um vetor e ele mesmo é sempre o vetor nulo
 \item Portanto o vetor ${\bf v}$ é o vetor nulo à direita e à esquerda de $[{\bf v}]_\times$. 
-\item Desta forma, uma matriz anti-simétrica $3\times 3$ será sempre definida por seu vetor
+  Ou seja, $\skewm{\vec v} \vec u$ =0 e $\vec{u}^\top\skewm{\vec v}$.
+\item Em outras palavras, as linhas e colunas de $\skewm {\vec v}$ são
+  ortogonais a $\vec v$.
+\item O posto de uma matriz antissimétrica $\skewm{\vec v}$ é 2 se $v \neq 0$
+\item Desta forma, uma matriz antissimétrica $3\times 3$ será sempre definida por seu vetor
   nulo. Isto pode ser mostrado para qualquer $n\times n$ ímpar usando
   determinantes.
-\item O conjunto das matrizes anti-simétricas $n\times n$ é denotado $o(n)$.
-\item Uma matriz anti-simétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0:$
+\item O conjunto das matrizes antissimétricas $n\times n$ é denotado $o(n)$.
+\item Uma matriz antissimétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0:$
 \begin{equation*}
 \begin{array}{rcl}
 {\bf v}^\top M\,{\bf v}
@@ -93,28 +97,94 @@ v_3
 \end{equation*}
 \end{itemize}
 
-Algumas propriedades adicionais
+Ademais:
 \begin{itemize}
 \item Se $\vec u$ é tal que $\|\vec u\| = 1$ e $U := \skewm{\vec u}$,
   então $U^2 = uu^\top - I$ e $U^3 = -U$. Se $\|\vec u\| \neq 1$, a última
   relação decorre de $U^3 = -\|u\|^2U=0$.
-\item Toda matriz é a soma de uma matriz simétrica e uma anti-simétrica:
+\item Toda matriz é a soma de uma matriz simétrica e uma antissimétrica:
   \begin{equation}
     A = \frac{1}{2}\left(A - A^\top\right) + \frac{1}{2}\left(A +
     A^\top\right).
   \end{equation}
-\item (Transformação de Cayley) Dada uma matriz anti-simétrica $A$ então:
+\item (Transformação de Cayley) Dada uma matriz antissimétrica $A$ então:
   \begin{enumerate}
-  \item Vale a seguinte identidade para $A$ anti-simétrica:
+  \item Vale a seguinte identidade para $A$ antissimétrica:
   \begin{equation}
     (I + A)^{-1} (I - A) = (I-A)(I+A)^{-1}
   \end{equation}
   \item Tal matriz é ortogonal e, de fato, uma rotação
-  \item Veremos que matrizes anti-simétrics (produtos vetoriais em 3D) podem
+  \item Veremos que matrizes antissimétrics (produtos vetoriais em 3D) podem
     ser interpretadas como rotações por um ângulo suficientemente pequeno.
   \item Exemplo: multiplicando-se uma matriz específica por um vetor 2D, depois
     3D, ve-se o efeito.
   \end{enumerate}
 \end{itemize}
-
 \todo{figura com rotação local}
+
+\begin{defi}
+  O comutador $\left[ A,B \right]$ de duas matrizes $A$ e $B$ é a diferença entre multiplicar na ordem
+$AB$ e na ordem $BA$: 
+\[
+  \left[ A,B \right] \doteq AB - BA.
+\]
+\end{defi}
+
+\begin{itemize}
+\item Nota-se que o comutador de matrizes antisimétricas é também uma matriz
+  antissimétrica: $\left[ A,B \right] = -\left[ B,A \right]$.
+\item Todos os auto-valores de $A$ antissimétrica são ou zero ou puramente imaginários, da
+  forma $i\omega$ para algum $\omega \in \mathbb R$.
+\item Isto é intuitivo, já que $A$ permuta coordenadas com sinal trocado, logo
+  nenhum vetor será múltiplo dele mesmo; também é fácil de ver a partir da
+  interpretação por produto vetorial.
+\end{itemize}
+
+\begin{teo}(Decomposição de matrizes antissimétricas)~\cite{Soatto}
+Toda matriz $A$ antissimétrica pode ser decomposta da forma:
+\begin{equation}
+  A = V \Lambda V^\top,
+\end{equation}
+onde $\Lambda$ é uma matriz diagonal por blocos $\Lambda = \text{diag}\{A_1,\dots,A_m,0,\dots,0\}$,
+onde cada $A_i$ é uma matriz antissimétrica real $2\times 2$ da forma:
+\begin{equation}
+  A_i = 
+  \begin{bmatrix}
+  0 & a_i\\
+  -a_i & 0
+\end{bmatrix},\ \ 
+i = 1,\dots,m.
+\end{equation}
+\end{teo}
+
+\begin{itemize}
+\item Se $A$ é qualquer, então $A^\top \skewm{\vec u} A$ é trivialmente
+  antissimétrica
+\item Logo, existe $\vec v$ tal que $A^\top \skewm{\vec u} A = \skewm{\vec v}$.
+\item Vamos tentar encontrar uma fórmula para $\skewm{\vec v}$ a partir de $A$ e $u$ a
+  seguir
+\end{itemize}
+
+\begin{prop}\label{prop:skewmoperator}
+  Se $A$ é uma matriz $3\times 3$ de determinante 1, então
+  \begin{equation}
+    A^\top \skewm{\vec u} A = \left[ A^{-1}\vec u \right]_\times
+  \end{equation}
+\end{prop}
+\begin{itemize}
+\item A proposição~\ref{prop:skewmoperator} permite ``trocar de lado'' uma matriz
+  $A$ com uma antissimétrica da seguinte forma:
+  \begin{equation}
+    \skewm{\vec u} A = A^{-\top}A^\top \skewm{\vec u} A = 
+    A^{-\top}\left[ A^{-1}\vec u \right]_\times
+  \end{equation}
+\end{itemize}
+
+\begin{exer}
+Como fica o resultado da proposição~\ref{prop:skewmoperator} se $A$ é
+não-inversível ou com determinante não-unitário?
+\end{exer}
+
+
+
+
