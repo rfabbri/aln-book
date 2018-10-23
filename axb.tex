@@ -33,16 +33,16 @@ Central em álgebra linear numérica é resolver sistemas da forma
 \item Em Scilab ou Matlab, por exemplo, pode-se usar a barra invertida para cegamente tentar
 obter uma solução:
 \begin{equation}
-  x = A\ b,
+  x = A\backslash b,
 \end{equation}
-onde a notação com a barra invertida ``\'' sugere que $x$ é $b$ dividido por
+onde a notação com a barra invertida ``$\backslash$'' sugere que $x$ é $b$ dividido por
 $A$, de alguma forma. 
 \item O Scilab nesse caso escolhe o melhor algoritmo, e em geral
   será o SVD, conforme veremos nesta seção.
 \end{itemize}
 
 \begin{itemize}
-\item Na prática, a matriz $A$ e o vetor $b$ consitem de medições com erro, repetidas
+\item Na prática, a matriz $A$ e o vetor $b$ consistem de medições com erro, repetidas
 inúmeras vezes. 
 \item Devido a esse erro, não há um $x$ que exatamente satisfaça $Ax = b$.
 \item Nesse caso, queremos um $x$ que satifaça $Ax = b$ aproximadamente. Ou

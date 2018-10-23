@@ -1,0 +1,88 @@
+\mynewpage
+\chapter{Exponenciais de Matrizes}
+
+
+\section*{Objetivos}
+\begin{itemize}
+\item Métodos numéricos para soluçào de equações não-lineares exigem a solução
+  de uma família de sistemas lineares
+\item Faz-se necessário obter essa família a partir de parametrizações simples
+\item Séries de potência permitem gerar famílias de sistemas lineares expandindo
+  a partir de matrizes simples.
+\item A expansão em série pode ser uma base para algoritmos eficientes, mesmo não
+  sendo em si um procedimento final
+\item Base para aplicações em sistemas dinâmicos e solução de equações não-lineares usando
+  teração com sistemas lineares (métodos de Newton, Gauss-Newton e afins).
+\end{itemize}
+
+\section*{Vimos} -- revisar conceitos da aula passada
+
+\section{Matrizes Anti-Simétricas}
+
+\begin{itemize}
+\item Será útil revisarmos matrizes anti-simétricas e aprofundar neste assunto
+\item Na Seção~\ref{sec:ortogonais:rev}, revisamos matrizes ortogonais que serão
+  úteis como exemplos nesta seção.
+\item Resta-nos revisar matrizes anti-simétricas
+\item Matrizes anti-simétricas e ortogonais serão conectadas com 
+exponenciais de matrizes
+\item Métodos numéricos relacionados serão obtidos e analisados, permitindo o
+  uso de matrizes simples para expressar e parametrizar matrizes mais complicadas.
+\end{itemize}
+
+\begin{itemize}
+\item Dado um vetor ${\bf v}=(v_1,v_2,v_3)^\top$, é possível construir uma matriz anti-simétrica com as componentes de ${\bf v}$ na forma
+\begin{equation*}
+[{\bf v}]_\times=
+\begin{bmatrix}
+0&-v_3&v_2\\
+v_3&0&-v_1\\
+-v_2&v_1&0
+\end{bmatrix}.
+\end{equation*}
+\item A notação $[{\bf v}]_\times$, também denotada $\skewm{\vec v}$, indica
+uma relação do produto desta matriz por um vetor qualquer $\vec u$ com o produto
+vetorial entre $\vec u$ e ${\bf v}$. De fato, pode-se expressar o produto
+vetorial por $\vec v$ através de multiplicação de matriz:
+\begin{equation*}
+{\bf v} \times {\bf u} = [{\bf v}]_\times {\bf u} = ({\bf v}^\top [{\bf u}]_\times)^\top
+\end{equation*}
+\item Tal representação matricial de um produto vetorial tem grandes
+  implicações práticas para o uso de técnicas matriciais na solução de equações
+  envolvendo 3 dimensões (mecânica/cinemática).
+\item Sabemos que o produto vetorial entre um vetor e ele mesmo é sempre o vetor nulo, portanto o vetor ${\bf v}$ é o vetor nulo à direita e à esquerda de $[{\bf v}]_\times$. Desta forma, esta matriz anti-simétrica será sempre definida por seu vetor nulo.  
+\end{itemize}
+
+Observe, ainda, que uma matriz anti-simétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0.$ Pois,
+\begin{equation*}
+\begin{array}{rcl}
+{\bf v}^\top M\,{\bf v}
+&=&
+\begin{pmatrix}
+v_1&v_2&v_3
+\end{pmatrix}
+\begin{bmatrix}
+0&m_{12}&m_{13}\\
+-m_{12}&0&m_{23}\\
+-m_{13}&-m_{23}&0
+\end{bmatrix}
+\begin{pmatrix}
+v_1\\
+v_2\\
+v_3
+\end{pmatrix}\\
+&=&
+\begin{pmatrix}
+-v_2 m_{12}-v_3 m_{13}&v_1 m_{12}-v_3 m_{23}&v_1 m_{13}+v_2 m_{23}
+\end{pmatrix}
+\begin{pmatrix}
+v_1\\
+v_2\\
+v_3
+\end{pmatrix}\\
+&=&
+-v_1 v_2 m_{12}-v_1 v_3 m_{13}+v_1 v_2 m_{12}-v_2 v_3 m_{23}+v_1 v_3 m_{13}+v_2 v_3 m_{23}\\
+&=&0.
+\end{array}
+\end{equation*}
+
