@@ -43,17 +43,23 @@ v_3&0&-v_1\\
 \item A notação $[{\bf v}]_\times$, também denotada $\skewm{\vec v}$, indica
 uma relação do produto desta matriz por um vetor qualquer $\vec u$ com o produto
 vetorial entre $\vec u$ e ${\bf v}$. De fato, pode-se expressar o produto
-vetorial por $\vec v$ através de multiplicação de matriz:
+vetorial por qualquer vetor $\vec v$ através de multiplicação de matriz:
 \begin{equation*}
 {\bf v} \times {\bf u} = [{\bf v}]_\times {\bf u} = ({\bf v}^\top [{\bf u}]_\times)^\top
 \end{equation*}
-\item Tal representação matricial de um produto vetorial tem grandes
-  implicações práticas para o uso de técnicas matriciais na solução de equações
-  envolvendo 3 dimensões (mecânica/cinemática).
-\item Sabemos que o produto vetorial entre um vetor e ele mesmo é sempre o vetor nulo, portanto o vetor ${\bf v}$ é o vetor nulo à direita e à esquerda de $[{\bf v}]_\times$. Desta forma, esta matriz anti-simétrica será sempre definida por seu vetor nulo.  
-\end{itemize}
-
-Observe, ainda, que uma matriz anti-simétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0.$ Pois,
+\item Ademais, para toda matriz anti-simétrica $A$ existe um vetor $\vec v$ tal
+  que $A = \skewm{\vec v}$.
+\item Tal representação matricial de um produto vetorial e a interpretação da
+  multiplicação por matriz anti-simétrica como tal tem grandes implicações práticas para
+  o uso de técnicas matriciais na solução de equações envolvendo 3 dimensões
+  (mecânica/cinemática).
+\item O produto vetorial entre um vetor e ele mesmo é sempre o vetor nulo
+\item Portanto o vetor ${\bf v}$ é o vetor nulo à direita e à esquerda de $[{\bf v}]_\times$. 
+\item Desta forma, uma matriz anti-simétrica $3\times 3$ será sempre definida por seu vetor
+  nulo. Isto pode ser mostrado para qualquer $n\times n$ ímpar usando
+  determinantes.
+\item O conjunto das matrizes anti-simétricas $n\times n$ é denotado $o(n)$.
+\item Uma matriz anti-simétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0:$
 \begin{equation*}
 \begin{array}{rcl}
 {\bf v}^\top M\,{\bf v}
@@ -85,4 +91,30 @@ v_3
 &=&0.
 \end{array}
 \end{equation*}
+\end{itemize}
 
+Algumas propriedades adicionais
+\begin{itemize}
+\item Se $\vec u$ é tal que $\|\vec u\| = 1$ e $U := \skewm{\vec u}$,
+  então $U^2 = uu^\top - I$ e $U^3 = -U$. Se $\|\vec u\| \neq 1$, a última
+  relação decorre de $U^3 = -\|u\|^2U=0$.
+\item Toda matriz é a soma de uma matriz simétrica e uma anti-simétrica:
+  \begin{equation}
+    A = \frac{1}{2}\left(A - A^\top\right) + \frac{1}{2}\left(A +
+    A^\top\right).
+  \end{equation}
+\item (Transformação de Cayley) Dada uma matriz anti-simétrica $A$ então:
+  \begin{enumerate}
+  \item Vale a seguinte identidade para $A$ anti-simétrica:
+  \begin{equation}
+    (I + A)^{-1} (I - A) = (I-A)(I+A)^{-1}
+  \end{equation}
+  \item Tal matriz é ortogonal e, de fato, uma rotação
+  \item Veremos que matrizes anti-simétrics (produtos vetoriais em 3D) podem
+    ser interpretadas como rotações por um ângulo suficientemente pequeno.
+  \item Exemplo: multiplicando-se uma matriz específica por um vetor 2D, depois
+    3D, ve-se o efeito.
+  \end{enumerate}
+\end{itemize}
+
+\todo{figura com rotação local}
