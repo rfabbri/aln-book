@@ -62,7 +62,8 @@ vetorial por qualquer vetor $\vec v$ através de multiplicação de matriz:
 \item Desta forma, uma matriz antissimétrica $3\times 3$ será sempre definida por seu vetor
   nulo. Isto pode ser mostrado para qualquer $n\times n$ ímpar usando
   determinantes.
-\item O conjunto das matrizes antissimétricas $n\times n$ é denotado $o(n)$.
+\item O conjunto das matrizes antissimétricas $n\times n$ juntoamente com
+  operação de multiplicação matriz-matriz é denotado $so(n)$.
 \item Uma matriz antissimétrica qualquer $M$ satisfaz a relação ${\bf v}^\top M\,{\bf v}=0:$
 \begin{equation*}
 \begin{array}{rcl}
@@ -209,7 +210,7 @@ R = \exp(A)  = e^A:= \sum_{k = 0}^{\infty} \frac{A^k}{k!}
 \item A função exponencial é um exemplo de uma função de matrizes, e é
   uma das funções de matrizes mais utilizadas em computação~\cite{Golub}.
 \item Exercício: se $A$ é antissimétrica, $exp(A)$ é uma matriz ortogonal.
-\item Exercicio: Ademais, $det(exp(A)) = +1$.
+\item Exercicio: Ademais, $det(exp(A)) = +1$, então $e^A$ é uma rotação.
 \end{itemize}
 
 \begin{teo}(Fórmula de Rodrigues)
@@ -238,4 +239,5 @@ R = \exp(A)  = e^A:= \sum_{k = 0}^{\infty} \frac{A^k}{k!}
   problemas de avaliação de funções, que são o gargalo de muitas técnicas mais
   complexas da área.
 \item \todo{resta melhorar muito ainda esta aula, porém o esboço é este}
+\item \todo{HZ identities\exp(x) = \sum_{k = 0}^{\infty} \frac{x^k}{k!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24} + \cdots}
 \end{itemize}
